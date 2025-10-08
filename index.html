@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialil Dev - Portfolio</title>
+  <meta name="description" content="Portfolio de Dialil Dev : sites modernes, logos uniques, support digital.">
+  <meta property="og:title" content="Dialil Dev - Portfolio">
+  <meta property="og:description" content="Sites modernes et logos uniques pour booster votre identité digitale.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.jpg">
+  <meta property="og:url" content="https://votre-domaine.tld">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <!-- Tailwind config doit être défini avant le CDN -->
+  <script>
+    tailwind = { config: { darkMode: 'class' } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS (animations au scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- CSS personnalisée -->
+  <link rel="stylesheet" href="style (2).css">
+</head>
+
+<body class="font-sans text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
+
+  <!-- Navigation sticky -->
+  <nav
+    class="fixed top-0 inset-x-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-300 dark:border-gray-700 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center gap-3">
+          <img src="logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover">
+          <span class="font-semibold text-gray-900 dark:text-gray-100">Dialil Dev</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#about"
+            class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">À propos</a>
+          <a href="#services"
+            class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Services</a>
+          <a href="#portfolio"
+            class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Portfolio</a>
+          <a href="#pricing"
+            class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Tarifs</a>
+          <a href="#contact"
+            class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Contact</a>
+        </div>
+        <button id="burger" aria-label="Ouvrir le menu" aria-expanded="false"
+          class="md:hidden p-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 bg-white dark:bg-gray-900 shadow-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu"
+      class="md:hidden hidden border-t border-gray-300 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
+      <div class="px-4 py-4 flex flex-col gap-2">
+        <a href="#about"
+          class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">À
+          propos</a>
+        <a href="#services"
+          class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Services</a>
+        <a href="#portfolio"
+          class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Portfolio</a>
+        <a href="#pricing"
+          class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Tarifs</a>
+        <a href="#contact"
+          class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <header id="home"
+    class="pt-16 h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
+    <!-- Background avec effet parallax -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-gray-900"></div>
+    <div class="absolute inset-0 bg-black/20"></div>
+
+    <!-- Particules flottantes -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="floating-particle absolute top-20 left-10 w-2 h-2 bg-orange-500 rounded-full opacity-60"></div>
+      <div class="floating-particle absolute top-40 right-20 w-3 h-3 bg-blue-400 rounded-full opacity-40"
+        style="animation-delay: 2s;"></div>
+      <div class="floating-particle absolute bottom-40 left-20 w-1 h-1 bg-purple-400 rounded-full opacity-50"
+        style="animation-delay: 4s;"></div>
+      <div class="floating-particle absolute top-60 right-40 w-2 h-2 bg-cyan-400 rounded-full opacity-30"
+        style="animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <!-- Vidéo agrandie avec effet glow -->
+      <div class="mb-8 relative" data-aos="fade-up">
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl scale-110">
+        </div>
+        <video autoplay loop muted playsinline preload="metadata" poster="logo.jpg"
+          class="w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl relative z-10 border-2 border-orange-500/30">
+          <source src="logo.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <!-- Effet de scan animé -->
+        <div class="absolute inset-0 rounded-2xl border-2 border-cyan-400/50 animate-pulse"></div>
+      </div>
+
+      <!-- Titre avec effet de typing -->
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white" data-aos="fade-up" data-aos-delay="200">
+        <span class="block mb-2">Je crée des</span>
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 animate-gradient-x">
+          sites modernes
+        </span>
+        <span class="block mt-2 text-2xl md:text-3xl lg:text-4xl text-gray-300">
+          & des <span class="text-orange-400">logos uniques</span>
+        </span>
+      </h1>
+
+      <!-- Sous-titre avec effet -->
+      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+        Développeur web & designer créatif • Sites ultra-rapides • Identités visuelles percutantes
+      </p>
+
+      <!-- Boutons CTA avec effets -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="zoom-in" data-aos-delay="600">
+        <a href="#contact"
+          class="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105">
+          <span class="relative z-10">Me contacter</span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-orange-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </a>
+        <a href="#portfolio"
+          class="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+          Voir mes projets
+        </a>
+      </div>
+    </div>
+
+    <!-- Indicateur de scroll -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- A PROPOS -->
+  <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900" id="about">
+    <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">À propos</h2>
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div data-aos="fade-right">
+        <img src="projets/photo-coding.jpg" alt="Photo de moi en train de coder"
+          class="w-full h-80 object-cover rounded-2xl shadow-xl">
+      </div>
+      <div data-aos="fade-left">
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-3">
+              Salut 👋 Je suis <span class="text-orange-500">Cherif alias Dialil Dev</span>
+            </h3>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <strong>Développeur web & designer créatif</strong> passionné par l'innovation digitale.
+              Je transforme vos idées en <strong>solutions web performantes</strong> et
+              <strong>identités visuelles mémorables</strong> qui marquent les esprits.
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-orange-50 to-blue-50 dark:from-orange-900/20 dark:to-blue-900/20 p-6 rounded-xl">
+            <h4 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200">Pourquoi me choisir ?</h4>
+            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 font-bold">⚡</span>
+                <span><strong>Délais respectés</strong> : Sites livrés en 5-7 jours maximum</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 font-bold">🎯</span>
+                <span><strong>Résultats garantis</strong> : +90% de performance Lighthouse</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 font-bold">💡</span>
+                <span><strong>Design unique</strong> : Chaque projet est 100% personnalisé</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 font-bold">🛡️</span>
+                <span><strong>Support continu</strong> : Accompagnement 6 mois inclus</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+              <h5 class="font-semibold text-orange-600 mb-2">Développement Web</h5>
+              <ul class="space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• Sites vitrines modernes</li>
+                <li>• E-commerce optimisés</li>
+                <li>• Applications web</li>
+              </ul>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+              <h5 class="font-semibold text-orange-600 mb-2">Design & Branding</h5>
+              <ul class="space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• Logos & identité visuelle</li>
+                <li>• Affiches publicitaires</li>
+                <li>• Charte graphique</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic">
+              "Mon objectif : faire briller votre entreprise dans le monde digital"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="py-20 bg-gradient-to-br from-blue-50 to-orange-50 dark:from-blue-900/20 dark:to-orange-900/20"
+    id="testimonials">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">
+        Ce que disent mes clients
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg" data-aos="fade-up">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
+              A
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">Amadou Ba</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Restaurant Le Teranga</p>
+            </div>
+          </div>
+          <div class="flex text-yellow-400 mb-3">
+            ⭐⭐⭐⭐⭐
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 italic">
+            "Dialil a créé notre site en 48h ! Le design est magnifique et nos réservations ont augmenté de 200%. Je
+            recommande vivement !"
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+              M
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">Mariama Diop</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Boutique Mode & Style</p>
+            </div>
+          </div>
+          <div class="flex text-yellow-400 mb-3">
+            ⭐⭐⭐⭐⭐
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 italic">
+            "Site e-commerce parfait ! Interface intuitive, paiements sécurisés. Mes ventes ont explosé depuis la mise
+            en ligne."
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+              I
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">Ibrahima Fall</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">École Polytechnique</p>
+            </div>
+          </div>
+          <div class="flex text-yellow-400 mb-3">
+            ⭐⭐⭐⭐⭐
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 italic">
+            "Logo Tuifoot 2026 exceptionnel ! Créativité et professionnalisme au rendez-vous. L'équipe est ravie !"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTIQUES -->
+  <section class="py-16 bg-white dark:bg-gray-800 transition-colors">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">
+        Mes résultats en chiffres
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center" data-aos="zoom-in">
+          <div class="text-4xl font-bold text-orange-500 mb-2" id="projectsCount">0</div>
+          <p class="text-gray-600 dark:text-gray-400">Projets livrés</p>
+        </div>
+        <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
+          <div class="text-4xl font-bold text-orange-500 mb-2" id="satisfactionRate">0%</div>
+          <p class="text-gray-600 dark:text-gray-400">Clients satisfaits</p>
+        </div>
+        <div class="text-center" data-aos="zoom-in" data-aos-delay="400">
+          <div class="text-4xl font-bold text-orange-500 mb-2" id="deliveryTime">0h</div>
+          <p class="text-gray-600 dark:text-gray-400">Délai moyen</p>
+        </div>
+        <div class="text-center" data-aos="zoom-in" data-aos-delay="600">
+          <div class="text-4xl font-bold text-orange-500 mb-2" id="performanceScore">0</div>
+          <p class="text-gray-600 dark:text-gray-400">Score Lighthouse</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section
+    class="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20 relative overflow-hidden"
+    id="services">
+    <!-- Effet de circuit en arrière-plan -->
+    <div class="absolute inset-0 circuit-pattern opacity-10"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <h2
+        class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
+        data-aos="fade-down">
+        Mes Services
+      </h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
+        Solutions digitales sur mesure pour propulser votre entreprise
+      </p>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Service 1 -->
+        <div
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-cyan-400/50"
+          data-aos="zoom-in">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-gray-800 dark:text-white group-hover:text-blue-600 transition-colors">
+              Développement Web
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              Sites vitrines, e-commerce, blogs modernes et performants avec les dernières technologies.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                Sites responsive
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                Optimisation SEO
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                Performance maximale
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-pink-400/50"
+          data-aos="zoom-in" data-aos-delay="200">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+              </svg>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-gray-800 dark:text-white group-hover:text-pink-600 transition-colors">
+              Logos & Identité
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              Création de logos uniques, chartes graphiques et visuels cohérents qui marquent les esprits.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+                Logos vectoriels
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+                Charte graphique
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+                Identité complète
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-green-400/50"
+          data-aos="zoom-in" data-aos-delay="400">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
+              </svg>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-gray-800 dark:text-white group-hover:text-green-600 transition-colors">
+              Support Digital
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              Maintenance, conseils et accompagnement pour votre croissance digitale continue.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                Maintenance 24/7
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                Conseils stratégiques
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                Formation incluse
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" id="portfolio">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">Portfolio
+      </h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">Mes créations récentes qui
+        parlent d'elles-mêmes</p>
+      <div class="grid gap-8 md:grid-cols-3">
+        <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up">
+          <div class="relative h-56 overflow-hidden">
+            <img src="projets/projet-netflix.jpg" alt="Affiche publicitaire Netflix"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          </div>
+          <div class="p-5 flex flex-col gap-2">
+            <h3 class="font-semibold text-lg">Affiche Netflix — Design publicitaire</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Création d'affiche pour vente de comptes Netflix
+              premium.
+            </p>
+            <div class="mt-2 flex gap-2 text-xs">
+              <span class="px-2 py-1 bg-red-100 text-red-700 rounded">Netflix</span>
+              <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded">Design</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-orange-600 hover:underline">Voir</a>
+              <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">Détails</a>
+            </div>
+          </div>
+        </article>
+        <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
+          data-aos-delay="150">
+          <div class="relative h-56 overflow-hidden">
+            <img src="projets/projet-poulet.jpg" alt="Affiche publicitaire poulet"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          </div>
+          <div class="p-5 flex flex-col gap-2">
+            <h3 class="font-semibold text-lg">Affiche Poulet — Marketing alimentaire</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Design d'affiche pour entreprise de vente de poulets de
+              chair.</p>
+            <div class="mt-2 flex gap-2 text-xs">
+              <span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded">Alimentaire</span>
+              <span class="px-2 py-1 bg-green-100 text-green-700 rounded">Marketing</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-orange-600 hover:underline">Voir</a>
+              <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">Détails</a>
+            </div>
+          </div>
+        </article>
+        <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
+          data-aos-delay="300">
+          <div class="relative h-56 overflow-hidden">
+            <img src="projets/logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          </div>
+          <div class="p-5 flex flex-col gap-2">
+            <h3 class="font-semibold text-lg">Logo Tuifoot 2026 — École Polytechnique</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Logo pour tournoi international de sport de l'École
+              Polytechnique de Thiès.</p>
+            <div class="mt-2 flex gap-2 text-xs">
+              <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded">Sport</span>
+              <span class="px-2 py-1 bg-orange-100 text-orange-700 rounded">Logo</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="text-orange-600 hover:underline">Voir</a>
+              <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">Détails</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" id="pricing">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
+        Mes tarifs transparents
+      </h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
+        Choisissez le package qui correspond à vos besoins
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Package Basique -->
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg" data-aos="fade-up">
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">Basique</h3>
+            <div class="text-4xl font-bold text-orange-500 mt-2">100 000 FCFA</div>
+            <p class="text-gray-600 dark:text-gray-400">Site vitrine simple</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Design responsive</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>5 pages maximum</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Formulaire de contact</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Livraison 7 jours</span>
+            </li>
+          </ul>
+          <button
+            class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-lg font-semibold">
+            Choisir Basique
+          </button>
+        </div>
+
+        <!-- Package Premium -->
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border-2 border-orange-500 relative"
+          data-aos="fade-up" data-aos-delay="200">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <span class="bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">POPULAIRE</span>
+          </div>
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">Premium</h3>
+            <div class="text-4xl font-bold text-orange-500 mt-2">120 000 FCFA</div>
+            <p class="text-gray-600 dark:text-gray-400">Site professionnel complet</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Design sur mesure</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Pages illimitées</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>SEO optimisé</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Livraison 5 jours</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Support 3 mois</span>
+            </li>
+          </ul>
+          <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition">
+            Choisir Premium
+          </button>
+        </div>
+
+        <!-- Package Pro -->
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">Pro</h3>
+            <div class="text-4xl font-bold text-orange-500 mt-2">200 000 FCFA</div>
+            <p class="text-gray-600 dark:text-gray-400">E-commerce avancé</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Boutique en ligne</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Paiements intégrés</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Gestion des stocks</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Livraison 7 jours</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500">✓</span>
+              <span>Support 6 mois</span>
+            </li>
+          </ul>
+          <button
+            class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-lg font-semibold">
+            Choisir Pro
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-white dark:bg-gray-800 transition-colors" id="faq">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
+        Questions fréquentes
+      </h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
+        Tout ce que vous devez savoir sur mes services
+      </p>
+      <div class="space-y-6">
+        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl" data-aos="fade-up">
+          <h3 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200">
+            Combien de temps faut-il pour créer mon site ?
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Site vitrine : 5-7 jours | Site e-commerce : 7-10 jours. Je respecte toujours les délais convenus !
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200">
+            Proposez-vous un support après livraison ?
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Oui ! Support inclus : 3 mois (Premium) ou 6 mois (Pro). Modifications mineures gratuites.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="400">
+          <h3 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200">
+            Mon site sera-t-il visible sur Google ?
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Absolument ! Tous mes sites sont optimisés SEO. Je garantis un score Lighthouse >90.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="600">
+          <h3 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200">
+            Puis-je modifier le contenu moi-même ?
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Oui ! Je vous forme à la gestion de votre site. Interface simple et intuitive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section
+    class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 transition-colors"
+    id="contact">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
+        Contactez-moi</h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
+        Prêt à donner vie à votre projet ? Parlons-en !
+      </p>
+      <form id="contactForm" action="https://formspree.io/f/xldpraeo" method="POST"
+        class="max-w-xl mx-auto flex flex-col gap-4" data-aos="fade-up">
+        <label class="sr-only" for="name">Nom</label>
+        <input id="name" name="name" type="text" placeholder="Nom" required
+          class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <label class="sr-only" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Email" required
+          class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <label class="sr-only" for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Votre message..." required
+          class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+        <button type="submit" class="px-6 py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-700 transition">
+          Envoyer
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 dark:bg-black text-gray-300 py-12 transition-colors">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-xl font-semibold text-white mb-4">Contact</h3>
+          <div class="space-y-3">
+            <a href="mailto:dialilndiaye1204@gmail.com"
+              class="flex items-center gap-3 hover:text-orange-500 transition">
+              <svg class="w-5 h-5 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+              <span>dialilndiaye1204@gmail.com</span>
+            </a>
+            <a href="https://wa.me/221785418331" class="flex items-center gap-3 hover:text-orange-500 transition">
+              <svg class="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+              </svg>
+              <span>+221 78 54 18 331</span>
+            </a>
+            <a href="https://instagram.com/dialil_ndiaye"
+              class="flex items-center gap-3 hover:text-orange-500 transition">
+              <svg class="w-5 h-5 text-pink-500" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+              <span>@dialil_ndiaye</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-xl font-semibold text-white mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#services" class="hover:text-orange-500 transition">Développement Web</a></li>
+            <li><a href="#services" class="hover:text-orange-500 transition">Design & Branding</a></li>
+            <li><a href="#services" class="hover:text-orange-500 transition">E-commerce</a></li>
+            <li><a href="#services" class="hover:text-orange-500 transition">Support Digital</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Links -->
+        <div>
+          <h3 class="text-xl font-semibold text-white mb-4">Suivez-moi</h3>
+          <div class="flex gap-4">
+            <a href="https://instagram.com/dialil_ndiaye"
+              class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition">
+              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a href="https://wa.me/221785418331"
+              class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+              </svg>
+            </a>
+            <a href="mailto:dialilndiaye1204@gmail.com"
+              class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 pt-6 text-center">
+        <p>&copy; 2025 Dialil Dev - Tous droits réservés | Créé avec ❤️ au Sénégal</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="SCRIPT.JS"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+</body>
+
+</html>
