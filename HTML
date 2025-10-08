@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialil Dev - Portfolio</title>
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Activer dark mode via la classe "dark"
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <!-- AOS (animations au scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
+
+  <!-- Bouton Dark Mode -->
+  <button id="darkToggle" class="fixed top-5 right-5 bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 transition">
+    🌙 Mode sombre
+  </button>
+
+<!-- HERO -->
+<header class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-blue-900 to-gray-900 text-white px-4">
+
+  <!-- Logo vidéo responsive -->
+  <video autoplay loop muted playsinline 
+    style="width: 1000px; height: auto;"
+    class="mb-6 rounded-xl shadow-xl">
+    <source src="logo.mp4" type="video/mp4">
+    <!-- Fallback image si la vidéo ne charge pas -->
+    <img src="logo.jpg" alt="Logo Dialil" class="w-full">
+  </video>
+
+  <!-- Titre -->
+  <h1 class="text-3xl md:text-5xl font-bold mb-4" data-aos="fade-up">
+    Je crée des <span class="text-orange-500">sites modernes</span> & des <span class="text-orange-500">logos uniques</span>.
+  </h1>
+
+  <!-- Bouton -->
+  <a href="#contact" 
+     class="mt-6 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-lg transition" 
+     data-aos="zoom-in">
+    Me contacter
+  </a>
+
+</header>
+
+  <!-- A PROPOS -->
+  <section class="py-16 max-w-4xl mx-auto px-6" id="about">
+    <h2 class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-8" data-aos="fade-down">À propos</h2>
+    <p class="text-lg text-center text-gray-700 dark:text-gray-300" data-aos="fade-up">
+      Salut 👋 je suis <strong>Cherif alias Dialil Dev</strong>.  
+      Je crée des sites rapides et des logos impactants pour aider les entreprises à avoir une identité digitale forte.
+    </p>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="py-16 bg-white dark:bg-gray-800 transition-colors" id="services">
+    <h2 class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-10" data-aos="fade-down">Mes Services</h2>
+    <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto px-6">
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="zoom-in">
+        <h3 class="text-xl font-semibold mb-3">Développement Web</h3>
+        <p>Sites vitrines, e-commerce, blogs modernes et performants.</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="zoom-in" data-aos-delay="200">
+        <h3 class="text-xl font-semibold mb-3">Logos & Identité</h3>
+        <p>Création de logos uniques, chartes graphiques et visuels cohérents.</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="zoom-in" data-aos-delay="400">
+        <h3 class="text-xl font-semibold mb-3">Support Digital</h3>
+        <p>Maintenance, conseils et accompagnement pour votre croissance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors" id="portfolio">
+    <h2 class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-10" data-aos="fade-down">Portfolio</h2>
+    <div class="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto px-6">
+      <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">Projet 1</div>
+      <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">Projet 2</div>
+      <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="400">Projet 3</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="py-16 bg-white dark:bg-gray-800 transition-colors" id="contact">
+    <h2 class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-8" data-aos="fade-down">Contactez-moi</h2>
+    <form id="contactForm" class="max-w-xl mx-auto flex flex-col gap-4 px-6" data-aos="fade-up">
+      <input type="text" placeholder="Nom" required class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <input type="email" placeholder="Email" required class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <textarea placeholder="Votre message..." required class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+      <button type="submit" class="px-6 py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-700 transition">
+        Envoyer
+      </button>
+    </form>
+  </section>
+
+  <footer class="bg-gray-900 dark:bg-black text-gray-300 text-center py-6 transition-colors">
+    <p>&copy; 2025 Dialil Dev - Tous droits réservés</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+</body>
+</html>
