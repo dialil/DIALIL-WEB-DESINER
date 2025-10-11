@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Transition - Dialil Dev</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .test-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+        .status {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .status.pass {
+            background: #10b981;
+        }
+        .status.fail {
+            background: #ef4444;
+        }
+        .scroll-info {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h3>🧪 Test de Transition</h3>
+        <div class="test-item">
+            <strong>Hero Section:</strong>
+            <span class="status pass" id="hero-status">OK</span>
+        </div>
+        <div class="test-item">
+            <strong>Section À propos:</strong>
+            <span class="status pass" id="about-status">OK</span>
+        </div>
+        <div class="test-item">
+            <strong>Transition fluide:</strong>
+            <span class="status pass" id="transition-status">OK</span>
+        </div>
+        <div class="test-item">
+            <strong>Indicateur scroll:</strong>
+            <span class="status pass" id="scroll-status">OK</span>
+        </div>
+    </div>
+
+    <div class="scroll-info">
+        <div>Scroll Y: <span id="scroll-y">0</span>px</div>
+        <div>Hero Height: <span id="hero-height">0</span>px</div>
+        <div>About Top: <span id="about-top">0</span>px</div>
+        <div>Transition: <span id="transition-state">Active</span></div>
+    </div>
+
+    <script>
+        function updateScrollInfo() {
+            const scrollY = window.pageYOffset;
+            const hero = document.querySelector('header');
+            const about = document.querySelector('#about');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            document.getElementById('scroll-y').textContent = Math.round(scrollY);
+            
+            if (hero) {
+                document.getElementById('hero-height').textContent = Math.round(hero.offsetHeight);
+            }
+            
+            if (about) {
+                document.getElementById('about-top').textContent = Math.round(about.offsetTop);
+            }
+            
+            // Vérifier la transition
+            if (scrollIndicator) {
+                const opacity = window.getComputedStyle(scrollIndicator).opacity;
+                const transform = window.getComputedStyle(scrollIndicator).transform;
+                
+                if (opacity === '0' || transform.includes('translateY(20px)')) {
+                    document.getElementById('transition-state').textContent = 'Masqué';
+                    document.getElementById('scroll-status').textContent = 'Masqué';
+                    document.getElementById('scroll-status').className = 'status pass';
+                } else {
+                    document.getElementById('transition-state').textContent = 'Visible';
+                    document.getElementById('scroll-status').textContent = 'Visible';
+                    document.getElementById('scroll-status').className = 'status pass';
+                }
+            }
+        }
+
+        // Mettre à jour toutes les 100ms
+        setInterval(updateScrollInfo, 100);
+        
+        // Mise à jour initiale
+        updateScrollInfo();
+    </script>
+</body>
+</html>

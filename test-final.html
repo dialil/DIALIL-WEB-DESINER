@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Final - Site Parfait</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.jpg">
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-500">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="flex items-center gap-3">
+                    <img src="assets/images/logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover">
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">Dialil Dev</span>
+                </a>
+                <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">À propos</a>
+                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Services</a>
+                    <a href="#portfolio" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Portfolio</a>
+                    <a href="#pricing" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Tarifs</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Contact</a>
+                    
+                    <!-- Bouton Mode Sombre/Clair -->
+                    <button id="darkModeToggle" 
+                        class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-orange-500 hover:text-white transition-all duration-300 transform hover:scale-105"
+                        aria-label="Basculer le mode sombre">
+                        <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="pt-16 h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
+                <span class="typing-text hero-title">Développeur Web</span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <span class="typing-text hero-subtitle">Créateur de sites web modernes et performants</span>
+            </p>
+            <a href="#contact" class="btn-contact inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+                <span class="relative z-10">Me contacter</span>
+            </a>
+        </div>
+        
+        <!-- Indicateur de scroll -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <div class="scroll-text">Scroll</div>
+        </div>
+    </header>
+
+    <!-- Section Test -->
+    <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900 relative z-10" id="about">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                Test des Fonctionnalités
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Vérification de toutes les améliorations apportées au site
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Test Boutons -->
+            <div class="card-hover p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Boutons Parfaits</h3>
+                <div class="space-y-4">
+                    <button class="btn-primary w-full">Bouton Principal</button>
+                    <button class="btn-secondary w-full">Bouton Secondaire</button>
+                    <button class="btn-contact w-full">Bouton Contact</button>
+                </div>
+            </div>
+
+            <!-- Test Formulaires -->
+            <div class="card-hover p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Formulaires Parfaits</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label for="test-name">Nom</label>
+                        <input type="text" id="test-name" placeholder="Votre nom" class="w-full">
+                    </div>
+                    <div>
+                        <label for="test-email">Email</label>
+                        <input type="email" id="test-email" placeholder="votre@email.com" class="w-full">
+                    </div>
+                    <div>
+                        <label for="test-message">Message</label>
+                        <textarea id="test-message" placeholder="Votre message" rows="3" class="w-full"></textarea>
+                    </div>
+                    <button type="submit" class="w-full">Envoyer</button>
+                </form>
+            </div>
+
+            <!-- Test Icônes Sociales -->
+            <div class="card-hover p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Icônes Sociales</h3>
+                <div class="social-icons flex gap-4 justify-center">
+                    <a href="#" class="text-2xl">📧</a>
+                    <a href="#" class="text-2xl">💼</a>
+                    <a href="#" class="text-2xl">🐦</a>
+                    <a href="#" class="text-2xl">📱</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Animations -->
+        <div class="mt-16 text-center">
+            <h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Test des Animations</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-hover p-6 rounded-2xl" data-aos="fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full mx-auto mb-4 pulse-glow-advanced"></div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">Pulse Glow</h4>
+                </div>
+                <div class="card-hover p-6 rounded-2xl" data-aos="fade-left">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-4 morph"></div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">Morphing</h4>
+                </div>
+                <div class="card-hover p-6 rounded-2xl" data-aos="fade-right">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mx-auto mb-4 wave"></div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">Wave</h4>
+                </div>
+                <div class="card-hover p-6 rounded-2xl" data-aos="zoom-in">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full mx-auto mb-4 rotate-3d"></div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">3D Rotate</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

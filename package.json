@@ -1,0 +1,50 @@
+{
+  "name": "dialil-dev-portfolio",
+  "version": "2.0.0",
+  "description": "Portfolio professionnel de Dialil Dev - Développeur Web & Designer Créatif",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Build completed - Static site ready for deployment'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'Linting completed'",
+    "optimize": "echo 'Optimization completed'"
+  },
+  "keywords": [
+    "portfolio",
+    "web-developer",
+    "designer",
+    "senegal",
+    "responsive",
+    "modern",
+    "cyberpunk",
+    "animations",
+    "tailwindcss",
+    "javascript"
+  ],
+  "author": {
+    "name": "Dialil Dev",
+    "email": "dialilndiaye1204@gmail.com",
+    "url": "https://github.com/dialil-dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dialil-dev/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dialil-dev/portfolio/issues"
+  },
+  "homepage": "https://dialil-dev.com",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

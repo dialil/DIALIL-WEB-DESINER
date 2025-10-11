@@ -9,10 +9,10 @@
   <meta property="og:title" content="Dialil Dev - Portfolio">
   <meta property="og:description" content="Sites modernes et logos uniques pour booster votre identité digitale.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="logo.jpg">
+  <meta property="og:image" content="assets/images/logo.jpg">
   <meta property="og:url" content="https://votre-domaine.tld">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="logo.jpg">
+  <link rel="icon" type="image/png" href="assets/images/logo.jpg">
   <!-- Tailwind config doit être défini avant le CDN -->
   <script>
     tailwind = { config: { darkMode: 'class' } };
@@ -21,7 +21,7 @@
   <!-- AOS (animations au scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- CSS personnalisée -->
-  <link rel="stylesheet" href="style (2).css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="font-sans text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
@@ -32,7 +32,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <a href="#home" class="flex items-center gap-3">
-          <img src="logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover">
+          <img src="assets/images/logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover">
           <span class="font-semibold text-gray-900 dark:text-gray-100">Dialil Dev</span>
         </a>
         <div class="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -46,6 +46,18 @@
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Tarifs</a>
           <a href="#contact"
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Contact</a>
+          
+          <!-- Bouton Mode Sombre/Clair -->
+          <button id="darkModeToggle" 
+            class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-orange-500 hover:text-white transition-all duration-300 transform hover:scale-105"
+            aria-label="Basculer le mode sombre">
+            <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </button>
         </div>
         <button id="burger" aria-label="Ouvrir le menu" aria-expanded="false"
           class="md:hidden p-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 bg-white dark:bg-gray-900 shadow-md">
@@ -69,6 +81,18 @@
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Tarifs</a>
         <a href="#contact"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Contact</a>
+        
+        <!-- Bouton Mode Sombre/Clair Mobile -->
+        <button id="darkModeToggleMobile" 
+          class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium flex items-center gap-3">
+          <svg id="sunIconMobile" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+          </svg>
+          <svg id="moonIconMobile" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+          <span id="modeText">Mode sombre</span>
+        </button>
       </div>
     </div>
   </nav>
@@ -95,12 +119,12 @@
     <!-- Contenu principal -->
     <div class="relative z-10 max-w-4xl mx-auto px-6">
       <!-- Vidéo agrandie avec effet glow -->
-      <div class="mb-8 relative" data-aos="fade-up">
-        <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl scale-110">
+      <div class="mb-8 relative pulse-glow-advanced" data-aos="fade-up">
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl scale-110 morph">
         </div>
-        <video autoplay loop muted playsinline preload="metadata" poster="logo.jpg"
-          class="w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl relative z-10 border-2 border-orange-500/30">
-          <source src="logo.mp4" type="video/mp4">
+        <video autoplay loop muted playsinline preload="metadata" poster="assets/images/logo.jpg"
+          class="w-48 sm:w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl relative z-10 border-2 border-orange-500/30 wave">
+          <source src="assets/videos/logo.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>
         <!-- Effet de scan animé -->
@@ -108,58 +132,57 @@
       </div>
 
       <!-- Titre avec effet de typing -->
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white" data-aos="fade-up" data-aos-delay="200">
-        <span class="block mb-2">Je crée des</span>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-white px-4" data-aos="fade-up" data-aos-delay="200">
+        <span class="block mb-2 typing-text">Je crée des</span>
         <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 animate-gradient-x">
+          class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 animate-gradient-x typing-text">
           sites modernes
         </span>
-        <span class="block mt-2 text-2xl md:text-3xl lg:text-4xl text-gray-300">
+        <span class="block mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-300 typing-text">
           & des <span class="text-orange-400">logos uniques</span>
         </span>
       </h1>
 
       <!-- Sous-titre avec effet -->
-      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+      <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto px-4" data-aos="fade-up" data-aos-delay="400">
         Développeur web & designer créatif • Sites ultra-rapides • Identités visuelles percutantes
       </p>
 
       <!-- Boutons CTA avec effets -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="zoom-in" data-aos-delay="600">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4" data-aos="zoom-in" data-aos-delay="600">
         <a href="#contact"
-          class="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105">
+          class="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center btn-contact">
           <span class="relative z-10">Me contacter</span>
           <div
             class="absolute inset-0 bg-gradient-to-r from-orange-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           </div>
         </a>
         <a href="#portfolio"
-          class="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+          class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm w-full sm:w-auto text-center">
           Voir mes projets
         </a>
       </div>
     </div>
 
     <!-- Indicateur de scroll -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
-      </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <div class="scroll-text">Scroll</div>
     </div>
   </header>
 
   <!-- A PROPOS -->
-  <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900" id="about">
+  <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900 relative z-10" id="about">
     <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">À propos</h2>
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div data-aos="fade-right">
-        <img src="photo-coding.jpg" alt="Photo de moi en train de coder"
+        <img src="assets/images/photo-coding.jpg" alt="Photo de moi en train de coder"
           class="w-full h-80 object-cover rounded-2xl shadow-xl">
       </div>
       <div data-aos="fade-left">
         <div class="space-y-6">
           <div>
-            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-3">
+            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-3 text-left">
               Salut 👋 Je suis <span class="text-orange-500">Cherif alias Dialil Dev</span>
             </h3>
             <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -171,7 +194,7 @@
 
           <div
             class="bg-gradient-to-r from-orange-50 to-blue-50 dark:from-orange-900/20 dark:to-blue-900/20 p-6 rounded-xl">
-            <h4 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200">Pourquoi me choisir ?</h4>
+            <h4 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200 text-left">Pourquoi me choisir ?</h4>
             <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li class="flex items-start gap-3">
                 <span class="text-orange-500 font-bold">⚡</span>
@@ -194,7 +217,7 @@
 
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-              <h5 class="font-semibold text-orange-600 mb-2">Développement Web</h5>
+              <h5 class="font-semibold text-orange-600 mb-2 text-left">Développement Web</h5>
               <ul class="space-y-1 text-gray-600 dark:text-gray-400">
                 <li>• Sites vitrines modernes</li>
                 <li>• E-commerce optimisés</li>
@@ -202,7 +225,7 @@
               </ul>
             </div>
             <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-              <h5 class="font-semibold text-orange-600 mb-2">Design & Branding</h5>
+              <h5 class="font-semibold text-orange-600 mb-2 text-left">Design & Branding</h5>
               <ul class="space-y-1 text-gray-600 dark:text-gray-400">
                 <li>• Logos & identité visuelle</li>
                 <li>• Affiches publicitaires</li>
@@ -335,7 +358,7 @@
       <div class="grid gap-8 md:grid-cols-3">
         <!-- Service 1 -->
         <div
-          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-cyan-400/50"
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-cyan-400/50 card-hover pulse-glow-advanced"
           data-aos="zoom-in">
           <div
             class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -374,7 +397,7 @@
 
         <!-- Service 2 -->
         <div
-          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-pink-400/50"
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-pink-400/50 card-hover pulse-glow-advanced"
           data-aos="zoom-in" data-aos-delay="200">
           <div
             class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -413,7 +436,7 @@
 
         <!-- Service 3 -->
         <div
-          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-green-400/50"
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-green-400/50 card-hover pulse-glow-advanced"
           data-aos="zoom-in" data-aos-delay="400">
           <div
             class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -463,7 +486,7 @@
       <div class="grid gap-8 md:grid-cols-3">
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up">
           <div class="relative h-56 overflow-hidden">
-            <img src="projet-netflix.jpg" alt="Affiche publicitaire Netflix"
+            <img src="assets/images/projet-netflix.jpg" alt="Affiche publicitaire Netflix"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
@@ -485,7 +508,7 @@
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
           data-aos-delay="150">
           <div class="relative h-56 overflow-hidden">
-            <img src="projet-poulet.jpg" alt="Affiche publicitaire poulet"
+            <img src="assets/images/projet-poulet.jpg" alt="Affiche publicitaire poulet"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
@@ -506,7 +529,7 @@
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
           data-aos-delay="300">
           <div class="relative h-56 overflow-hidden">
-            <img src="logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
+            <img src="assets/images/logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
@@ -803,7 +826,7 @@
   </footer>
 
   <!-- JS -->
-  <script src="SCRIPT.JS"></script>
+  <script src="js/script.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
