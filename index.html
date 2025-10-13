@@ -13,25 +13,35 @@
   <meta property="og:description" content="Sites modernes et logos uniques pour booster votre identité digitale.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/logo.jpg">
-  <meta property="og:url" content="https://votre-domaine.tld">
+  <meta property="og:url" content="https://dialil-dev.com/">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="assets/images/logo.jpg">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="canonical" href="https://dialil-dev.com/">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Tailwind config doit être défini avant le CDN -->
   <script>
-    tailwind = { config: { darkMode: 'class' } };
+    tailwind.config = { darkMode: 'class' };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS (animations au scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- CSS personnalisée -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Google Analytics (remplacer l'ID par le vôtre) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script src="gtag.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Dialil Dev",
-    "url": "https://votre-domaine.tld",
+    "url": "https://dialil-dev.com/",
     "image": "assets/images/logo.jpg",
     "jobTitle": "Développeur web & designer",
     "sameAs": [
@@ -50,6 +60,7 @@
 </head>
 
 <body class="font-sans text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-black dark:bg-gray-800 dark:text-white px-3 py-2 rounded">Aller au contenu</a>
 
   <!-- Navigation sticky -->
   <nav
@@ -57,7 +68,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <a href="#home" class="flex items-center gap-3">
-          <img src="assets/images/logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover">
+          <img src="assets/images/logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover" width="36" height="36">
           <span class="font-semibold text-gray-900 dark:text-gray-100">Dialil Dev</span>
         </a>
         <div class="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -123,6 +134,7 @@
   </nav>
 
 
+  <main id="main">
   <!-- HERO -->
   <header id="home"
     class="pt-16 h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
@@ -203,7 +215,7 @@
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div data-aos="fade-right">
         <img src="assets/images/photo-coding.jpg" alt="Photo de moi en train de coder"
-          class="w-full h-80 object-cover rounded-2xl shadow-xl">
+          class="w-full h-80 object-cover rounded-2xl shadow-xl" loading="lazy" decoding="async">
       </div>
       <div data-aos="fade-left">
         <div class="space-y-6">
@@ -513,7 +525,7 @@
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up">
           <div class="relative h-56 overflow-hidden">
             <img src="assets/images/projet-netflix.jpg" alt="Affiche publicitaire Netflix"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -535,7 +547,7 @@
           data-aos-delay="150">
           <div class="relative h-56 overflow-hidden">
             <img src="assets/images/projet-poulet.jpg" alt="Affiche publicitaire poulet"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -556,7 +568,7 @@
           data-aos-delay="300">
           <div class="relative h-56 overflow-hidden">
             <img src="assets/images/logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -849,7 +861,8 @@
         <p>&copy; 2025 Dialil Dev - Tous droits réservés | Créé avec ❤️ au Sénégal</p>
       </div>
     </div>
-  </footer>
+  </main>
+  <footer class="bg-gray-900 dark:bg-black text-gray-300 py-12 transition-colors">
 
   <!-- JS -->
   <script src="js/script.js"></script>
