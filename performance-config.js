@@ -116,6 +116,7 @@ function optimizeScripts() {
   });
 }
 
+<<<<<<< Current (Your changes)
 // Optimiser les CSS
 function optimizeCSS() {
   // Charger les CSS non critiques de manière asynchrone
@@ -133,6 +134,31 @@ function optimizeCSS() {
     };
     document.head.appendChild(link);
   });
+=======
+// Fonction pour mesurer les performances
+function measurePerformance() {
+  if ('performance' in window) {
+    const perfData = performance.getEntriesByType('navigation')[0];
+    
+    // Mesurer le temps de chargement
+    const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+    const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
+    
+    // Envoyer les données d'analytics si configuré
+    if (PerformanceConfig.analytics.trackEvents.includes('performance_metrics')) {
+      gtag('event', 'performance_metrics', {
+        'event_category': 'performance',
+        'event_label': 'page_load',
+        'value': Math.round(loadTime)
+      });
+    }
+    
+    // Surveiller les performances (silencieux en production)
+    if (loadTime > PerformanceConfig.performance.performanceThreshold * 10) {
+      // Performance dégradée détectée - à surveiller
+    }
+  }
+>>>>>>> Incoming (Background Agent changes)
 }
 
 // Service Worker pour le cache
