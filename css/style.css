@@ -945,7 +945,7 @@ header {
 .scroll-indicator .scroll-arrow {
   width: 1.5rem;
   height: 2.5rem;
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 1rem;
   display: flex;
   justify-content: center;
@@ -956,14 +956,14 @@ header {
   content: '';
   width: 0.25rem;
   height: 0.75rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 1);
   border-radius: 0.125rem;
   margin-top: 0.5rem;
   animation: scroll-pulse 2s infinite;
 }
 
 .scroll-indicator .scroll-text {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 0.75rem;
   margin-top: 0.5rem;
   text-align: center;
@@ -1122,6 +1122,14 @@ html {
 /* ========================= */
 /* OPTIMISATION VISIBILITÉ */
 /* ========================= */
+
+/* Rendre le texte en dégradé compatible mobile (Safari iOS)
+   et éviter le texte invisible en mode clair avec text-transparent */
+.bg-clip-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
 
 /* ========================= */
 /* COULEURS PARFAITES POUR VISIBILITÉ MAXIMALE */
@@ -1349,10 +1357,15 @@ button {
   text-transform: none !important;
 }
 
-/* Amélioration des liens */
+/* Amélioration des liens (contraste en mode clair/sombre) */
 a {
   text-decoration: none !important;
   transition: all 0.3s ease !important;
+  color: #0f172a !important;
+}
+
+.dark a {
+  color: #e5e7eb !important;
 }
 
 a:hover {
