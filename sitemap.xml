@@ -7,7 +7,10 @@
   <!-- Page d'accueil -->
   <url>
     <loc>https://dialil-dev.com/</loc>
+<<<<<<< Current (Your changes)
     <lastmod>2025-01-27</lastmod>
+=======
+>>>>>>> Incoming (Background Agent changes)
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
