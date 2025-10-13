@@ -104,7 +104,33 @@ function initCardAnimations() {
   });
 }
 
-// Animation de parallax pour le hero (utilisée dans optimizedScrollHandler)
+// Animation de parallax pour le hero
+function initParallaxEffect() {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('header');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    const aboutSection = document.querySelector('#about');
+    
+    if (hero) {
+      hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+    
+    // Masquer l'indicateur de scroll quand on arrive à la section à propos
+    if (scrollIndicator && aboutSection) {
+      const aboutTop = aboutSection.offsetTop;
+      const heroHeight = hero.offsetHeight;
+      
+      if (scrolled > heroHeight * 0.8) {
+        scrollIndicator.style.opacity = '0';
+        scrollIndicator.style.transform = 'translateY(20px)';
+      } else {
+        scrollIndicator.style.opacity = '1';
+        scrollIndicator.style.transform = 'translateY(0)';
+      }
+    }
+  });
+}
 
 // Animation de loading pour les images
 function initImageLoading() {
@@ -170,29 +196,6 @@ if (contactForm) {
           submitButton.textContent = originalText;
           submitButton.style.background = '';
         }, 2000);
-<<<<<<< Current (Your changes)
-      } else {
-        throw new Error('Erreur lors de l\'envoi');
-      }
-    })
-    .catch(error => {
-      // Animation d'erreur
-      submitButton.innerHTML = '❌ Erreur';
-      submitButton.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
-      
-      setTimeout(() => {
-        submitButton.textContent = originalText;
-        submitButton.style.background = '';
-      }, 2000);
-      
-      // Erreur silencieuse pour éviter de polluer la console
-    })
-    .finally(() => {
-      submitButton.disabled = false;
-      submitButton.classList.remove('pulse-glow-advanced');
-    });
-});
-=======
 
         console.error('Erreur:', error);
       })
@@ -202,7 +205,6 @@ if (contactForm) {
       });
   });
 }
->>>>>>> Incoming (Background Agent changes)
 
 // Animation de confetti
 function createConfetti() {
@@ -548,10 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
   optimizeAnimationsForMobile();
   
   // Initialiser toutes les animations
-  if (window.innerWidth > 768) {
-    initTypingAnimation();
-    createFloatingParticles();
-  }
+  initTypingAnimation();
+  createFloatingParticles();
   initScrollReveal();
   initCardAnimations();
   initImageLoading();
