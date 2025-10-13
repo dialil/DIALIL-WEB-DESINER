@@ -1,0 +1,751 @@
+/* Effet de scroll fluide */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+header h1 span {
+  position: relative;
+  display: inline-block;
+}
+
+/* Effet soigné animé */
+header h1 span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 3px;
+  background: #ff6b35;
+  transition: width 0.4s ease-in-out;
+}
+
+header h1 span:hover::after {
+  width: 100%;
+}
+
+/* ========================= */
+/* BOUTONS */
+/* ========================= */
+a.btn-contact,
+button[type="submit"] {
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+a.btn-contact:hover,
+button[type="submit"]:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.7);
+}
+
+/* Bouton Dark Mode */
+#darkToggle {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* ========================= */
+/* SERVICES / PORTFOLIO */
+/* ========================= */
+.card-hover {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================= */
+/* RESEAUX SOCIAUX */
+/* ========================= */
+.social-icons a {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: top 0.4s;
+}
+
+.social-icons a:hover::before {
+  top: 0;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+footer p {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+footer p:hover {
+  opacity: 1;
+}
+
+/* ========================= */
+/* EFFETS VISUELS AVANCÉS */
+/* ========================= */
+
+/* Parallax subtil pour le hero */
+header {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Gradient animé en arrière-plan */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #1e3a8a, #1f2937, #dc2626, #ea580c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Effet de typing pour le titre */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end);
+}
+
+/* Hover effects pour les cartes */
+.card-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.card-hover:hover::before {
+  left: 100%;
+}
+
+/* Effet de particules flottantes */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Effet de glow pour les boutons */
+.glow-effect {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.8);
+}
+
+/* Animation de chargement pour les images */
+@keyframes imageLoad {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.image-loaded {
+  animation: imageLoad 0.6s ease-out;
+}
+
+/* Effet de scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Effet de glassmorphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animation de pulsation pour les éléments importants */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* ========================= */
+/* EFFETS HIGH-TECH AVANCÉS */
+/* ========================= */
+
+/* Particules flottantes */
+.floating-particle {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Gradient animé pour le texte */
+@keyframes gradient-x {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Effet de scan cyberpunk */
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: scan-line 3s linear infinite;
+}
+
+/* Effet de glitch */
+@keyframes glitch {
+
+  0%,
+  100% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.glitch-effect {
+  animation: glitch 0.3s ease-in-out infinite;
+}
+
+/* Effet de néon */
+.neon-glow {
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 15px #00ffff,
+    0 0 20px #00ffff;
+}
+
+/* Effet de matrix */
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.matrix-char {
+  position: absolute;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  animation: matrix-rain 3s linear infinite;
+}
+
+/* Effet de hologramme */
+.hologram {
+  position: relative;
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%);
+  background-size: 20px 20px;
+  animation: hologram-shift 2s linear infinite;
+}
+
+@keyframes hologram-shift {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 20px 20px;
+  }
+}
+
+/* Effet de circuit */
+.circuit-pattern {
+  background-image:
+    linear-gradient(90deg, transparent 50%, rgba(0, 255, 255, 0.1) 50%),
+    linear-gradient(0deg, transparent 50%, rgba(0, 255, 255, 0.1) 50%);
+  background-size: 20px 20px;
+}
+
+/* Effet de data stream */
+@keyframes data-stream {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.data-stream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: data-stream 2s linear infinite;
+}
+
+/* Effet de loading cyberpunk */
+.cyber-loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #333;
+  border-top: 3px solid #00ffff;
+  border-radius: 50%;
+  animation: cyber-spin 1s linear infinite;
+}
+
+@keyframes cyber-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Effet de typing avec curseur */
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+/* Effet de particules connectées */
+.particle-network {
+  position: relative;
+}
+
+.particle-network::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: network-pulse 4s ease-in-out infinite;
+}
+
+@keyframes network-pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* ========================= */
+/* OPTIMISATION VISIBILITÉ */
+/* ========================= */
+
+/* Amélioration des contrastes */
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+.dark .text-gray-300 {
+  color: #d1d5db !important;
+}
+
+/* Amélioration des bordures */
+.border {
+  border-color: #e5e7eb !important;
+}
+
+.dark .border {
+  border-color: #374151 !important;
+}
+
+/* Amélioration des ombres */
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Amélioration des backgrounds */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.dark .bg-gray-800 {
+  background-color: #1f2937 !important;
+}
+
+.dark .bg-gray-900 {
+  background-color: #111827 !important;
+}
+
+/* Amélioration des inputs */
+input,
+textarea {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #111827 !important;
+}
+
+.dark input,
+.dark textarea {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+/* Amélioration des boutons */
+button {
+  font-weight: 600 !important;
+  text-transform: none !important;
+}
+
+/* Amélioration des liens */
+a {
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+/* Amélioration des titres */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+/* Amélioration de l'espacement */
+section {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+/* Amélioration de la lisibilité */
+p {
+  line-height: 1.6 !important;
+  font-size: 1.1rem !important;
+}
+
+/* Amélioration des cartes */
+.card-hover {
+  border: 1px solid #e5e7eb !important;
+  background-color: #ffffff !important;
+}
+
+.dark .card-hover {
+  border: 1px solid #374151 !important;
+  background-color: #1f2937 !important;
+}
+
+/* Amélioration des icônes */
+svg {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* Amélioration de la navigation */
+nav {
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 2px solid #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark nav {
+  background-color: rgba(17, 24, 39, 0.95) !important;
+  border-bottom: 2px solid #374151 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Navigation links */
+nav a {
+  color: #374151 !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.dark nav a {
+  color: #d1d5db !important;
+}
+
+nav a:hover {
+  color: #f97316 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Burger menu button */
+#burger {
+  background-color: #ffffff !important;
+  border: 2px solid #d1d5db !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark #burger {
+  background-color: #1f2937 !important;
+  border: 2px solid #4b5563 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+#burger:hover {
+  background-color: #f3f4f6 !important;
+  transform: scale(1.05) !important;
+}
+
+.dark #burger:hover {
+  background-color: #374151 !important;
+}
+
+/* Mobile menu */
+#mobileMenu {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border-top: 2px solid #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark #mobileMenu {
+  background-color: rgba(17, 24, 39, 0.95) !important;
+  border-top: 2px solid #374151 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+#mobileMenu a {
+  color: #374151 !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.dark #mobileMenu a {
+  color: #d1d5db !important;
+}
+
+#mobileMenu a:hover {
+  color: #f97316 !important;
+  background-color: #f3f4f6 !important;
+  transform: translateX(4px) !important;
+}
+
+.dark #mobileMenu a:hover {
+  background-color: #374151 !important;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 1rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .hero-video {
+    width: 200px !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .hero-video {
+    width: 180px !important;
+  }
+
+  .section-padding {
+    padding: 3rem 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem !important;
+  }
+
+  .hero-video {
+    width: 160px !important;
+  }
+
+  .grid-cols-1 {
+    grid-template-columns: 1fr !important;
+  }
+}

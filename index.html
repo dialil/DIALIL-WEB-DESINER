@@ -4,61 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="csrf-token" content="">
   <title>Dialil Dev - Portfolio</title>
   <meta name="description" content="Portfolio de Dialil Dev : sites modernes, logos uniques, support digital.">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
   <meta property="og:title" content="Dialil Dev - Portfolio">
   <meta property="og:description" content="Sites modernes et logos uniques pour booster votre identité digitale.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/logo.jpg">
-  <meta property="og:url" content="https://dialil-dev.com/">
-  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="logo.jpg">
+  <meta property="og:url" content="https://votre-domaine.tld">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="manifest" href="manifest.json">
-  <link rel="canonical" href="https://dialil-dev.com/">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Tailwind CSS -->
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <!-- Tailwind config doit être défini avant le CDN -->
+  <script>
+    tailwind = { config: { darkMode: 'class' } };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS (animations au scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- CSS personnalisé -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Google Analytics (remplacer l'ID par le vôtre) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script src="gtag.js" defer></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Dialil Dev",
-    "url": "https://dialil-dev.com/",
-    "image": "assets/images/logo.jpg",
-    "jobTitle": "Développeur web & designer",
-    "sameAs": [
-      "https://instagram.com/dialil_ndiaye",
-      "https://wa.me/221785418331",
-      "mailto:dialilndiaye1204@gmail.com"
-    ],
-    "knowsAbout": [
-      "Développement Web",
-      "Design",
-      "E-commerce",
-      "Branding"
-    ]
-  }
-  </script>
+  <!-- CSS personnalisée -->
+  <link rel="stylesheet" href="style (2).css">
 </head>
 
 <body class="font-sans text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-black dark:bg-gray-800 dark:text-white px-3 py-2 rounded">Aller au contenu</a>
 
   <!-- Navigation sticky -->
   <nav
@@ -66,7 +32,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <a href="#home" class="flex items-center gap-3">
-          <img src="assets/images/logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover" width="36" height="36">
+          <img src="logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover">
           <span class="font-semibold text-gray-900 dark:text-gray-100">Dialil Dev</span>
         </a>
         <div class="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -80,8 +46,6 @@
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Tarifs</a>
           <a href="#contact"
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Contact</a>
-          
-
         </div>
         <button id="burger" aria-label="Ouvrir le menu" aria-expanded="false"
           class="md:hidden p-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 bg-white dark:bg-gray-900 shadow-md">
@@ -105,14 +69,11 @@
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Tarifs</a>
         <a href="#contact"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Contact</a>
-        
-
       </div>
     </div>
   </nav>
 
 
-  <main id="main">
   <!-- HERO -->
   <header id="home"
     class="pt-16 h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
@@ -134,13 +95,12 @@
     <!-- Contenu principal -->
     <div class="relative z-10 max-w-4xl mx-auto px-6">
       <!-- Vidéo agrandie avec effet glow -->
-      <div class="mb-8 relative pulse-glow-advanced" data-aos="fade-up">
-        <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl scale-110 morph">
+      <div class="mb-8 relative" data-aos="fade-up">
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl scale-110">
         </div>
-        <video autoplay loop muted playsinline preload="metadata" poster="assets/images/logo.jpg" controls
-          class="hero-video w-48 sm:w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl relative z-10 border-2 border-orange-500/30 wave"
-          style="background:#000; display:block; max-width:100%; height:auto; object-fit:cover;">
-          <source src="assets/videos/logo.mp4" type="video/mp4">
+        <video autoplay loop muted playsinline preload="metadata" poster="logo.jpg"
+          class="w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl relative z-10 border-2 border-orange-500/30">
+          <source src="logo.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>
         <!-- Effet de scan animé -->
@@ -148,57 +108,58 @@
       </div>
 
       <!-- Titre avec effet de typing -->
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-white px-4" data-aos="fade-up" data-aos-delay="200">
-        <span class="block mb-2 typing-text">Je crée des</span>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white" data-aos="fade-up" data-aos-delay="200">
+        <span class="block mb-2">Je crée des</span>
         <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 animate-gradient-x typing-text">
+          class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 animate-gradient-x">
           sites modernes
         </span>
-        <span class="block mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-300 typing-text">
+        <span class="block mt-2 text-2xl md:text-3xl lg:text-4xl text-gray-300">
           & des <span class="text-orange-400">logos uniques</span>
         </span>
       </h1>
 
       <!-- Sous-titre avec effet -->
-      <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto px-4" data-aos="fade-up" data-aos-delay="400">
+      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
         Développeur web & designer créatif • Sites ultra-rapides • Identités visuelles percutantes
       </p>
 
       <!-- Boutons CTA avec effets -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4" data-aos="zoom-in" data-aos-delay="600">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="zoom-in" data-aos-delay="600">
         <a href="#contact"
-          class="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center btn-contact">
+          class="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105">
           <span class="relative z-10">Me contacter</span>
           <div
             class="absolute inset-0 bg-gradient-to-r from-orange-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           </div>
         </a>
         <a href="#portfolio"
-          class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm w-full sm:w-auto text-center">
+          class="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
           Voir mes projets
         </a>
       </div>
     </div>
 
     <!-- Indicateur de scroll -->
-    <div class="scroll-indicator">
-      <div class="scroll-arrow"></div>
-      <div class="scroll-text">Scroll</div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+      </div>
     </div>
   </header>
 
   <!-- A PROPOS -->
-  <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900 relative z-10" id="about">
+  <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900" id="about">
     <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">À propos</h2>
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div data-aos="fade-right">
-        <img src="assets/images/photo-coding.jpg" alt="Photo de moi en train de coder"
-          class="w-full h-80 object-cover rounded-2xl shadow-xl" loading="lazy" decoding="async">
+        <img src="photo-coding.jpg" alt="Photo de moi en train de coder"
+          class="w-full h-80 object-cover rounded-2xl shadow-xl">
       </div>
       <div data-aos="fade-left">
         <div class="space-y-6">
           <div>
-            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-3 text-left">
+            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-3">
               Salut 👋 Je suis <span class="text-orange-500">Cherif alias Dialil Dev</span>
             </h3>
             <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -210,7 +171,7 @@
 
           <div
             class="bg-gradient-to-r from-orange-50 to-blue-50 dark:from-orange-900/20 dark:to-blue-900/20 p-6 rounded-xl">
-            <h4 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200 text-left">Pourquoi me choisir ?</h4>
+            <h4 class="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-200">Pourquoi me choisir ?</h4>
             <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li class="flex items-start gap-3">
                 <span class="text-orange-500 font-bold">⚡</span>
@@ -233,7 +194,7 @@
 
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-              <h5 class="font-semibold text-orange-600 mb-2 text-left">Développement Web</h5>
+              <h5 class="font-semibold text-orange-600 mb-2">Développement Web</h5>
               <ul class="space-y-1 text-gray-600 dark:text-gray-400">
                 <li>• Sites vitrines modernes</li>
                 <li>• E-commerce optimisés</li>
@@ -241,7 +202,7 @@
               </ul>
             </div>
             <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-              <h5 class="font-semibold text-orange-600 mb-2 text-left">Design & Branding</h5>
+              <h5 class="font-semibold text-orange-600 mb-2">Design & Branding</h5>
               <ul class="space-y-1 text-gray-600 dark:text-gray-400">
                 <li>• Logos & identité visuelle</li>
                 <li>• Affiches publicitaires</li>
@@ -363,7 +324,7 @@
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <h2
-        class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4"
+        class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
         data-aos="fade-down">
         Mes Services
       </h2>
@@ -374,7 +335,7 @@
       <div class="grid gap-8 md:grid-cols-3">
         <!-- Service 1 -->
         <div
-          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-cyan-400/50 card-hover pulse-glow-advanced"
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-cyan-400/50"
           data-aos="zoom-in">
           <div
             class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -413,7 +374,7 @@
 
         <!-- Service 2 -->
         <div
-          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-pink-400/50 card-hover pulse-glow-advanced"
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-pink-400/50"
           data-aos="zoom-in" data-aos-delay="200">
           <div
             class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -452,7 +413,7 @@
 
         <!-- Service 3 -->
         <div
-          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-green-400/50 card-hover pulse-glow-advanced"
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 hover:border-green-400/50"
           data-aos="zoom-in" data-aos-delay="400">
           <div
             class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -502,8 +463,8 @@
       <div class="grid gap-8 md:grid-cols-3">
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up">
           <div class="relative h-56 overflow-hidden">
-            <img src="assets/images/projet-netflix.jpg" alt="Affiche publicitaire Netflix"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+            <img src="projet-netflix.jpg" alt="Affiche publicitaire Netflix"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -524,8 +485,8 @@
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
           data-aos-delay="150">
           <div class="relative h-56 overflow-hidden">
-            <img src="assets/images/projet-poulet.jpg" alt="Affiche publicitaire poulet"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+            <img src="projet-poulet.jpg" alt="Affiche publicitaire poulet"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -545,8 +506,8 @@
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
           data-aos-delay="300">
           <div class="relative h-56 overflow-hidden">
-            <img src="assets/images/logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+            <img src="logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -839,25 +800,13 @@
         <p>&copy; 2025 Dialil Dev - Tous droits réservés | Créé avec ❤️ au Sénégal</p>
       </div>
     </div>
-  </main>
-  <footer class="bg-gray-900 dark:bg-black text-gray-300 py-12 transition-colors">
+  </footer>
 
   <!-- JS -->
-  <script src="performance-config.js"></script>
-  <script src="js/script.js"></script>
-  <!-- Force visibilité -->
-  <script src="force-visibility.js"></script>
+  <script src="SCRIPT.JS"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({ 
-          duration: 1000, 
-          once: true,
-          disable: window.innerWidth < 768 // Désactiver sur mobile pour les performances
-        });
-      }
-    });
+    AOS.init({ duration: 1000, once: true });
   </script>
 </body>
 
