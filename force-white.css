@@ -7,13 +7,31 @@ html.dark * {
   color: white !important;
 }
 
-/* Spécifique Tailwind override */
+/* SOUS-TEXTES - FORCE BLANC PUR */
+.dark .text-sm,
+.dark .text-xs,
 .dark .text-gray-300,
 .dark .text-gray-400,
 .dark .text-gray-500,
 .dark .text-gray-600,
 .dark .text-gray-700,
 .dark .text-gray-800,
-.dark .text-gray-900 {
-  color: white !important;
+.dark .text-gray-900,
+.dark p.text-sm,
+.dark p.text-xs,
+.dark span.text-sm,
+.dark span.text-xs {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+/* Descriptions et sous-titres */
+.dark article p,
+.dark .card-hover p,
+.dark section p.text-center,
+.dark .text-gray-600,
+.dark .text-gray-400 {
+  color: #ffffff !important;
+  opacity: 1 !important;
 }
