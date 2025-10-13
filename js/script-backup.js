@@ -588,4 +588,3 @@ document.addEventListener('DOMContentLoaded', () => {
     darkModeToggleMobile.addEventListener('click', toggleDarkMode);
   }
 });
-
