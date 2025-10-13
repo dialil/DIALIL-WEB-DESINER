@@ -104,33 +104,7 @@ function initCardAnimations() {
   });
 }
 
-// Animation de parallax pour le hero
-function initParallaxEffect() {
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('header');
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    const aboutSection = document.querySelector('#about');
-    
-    if (hero) {
-      hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-    
-    // Masquer l'indicateur de scroll quand on arrive à la section à propos
-    if (scrollIndicator && aboutSection) {
-      const aboutTop = aboutSection.offsetTop;
-      const heroHeight = hero.offsetHeight;
-      
-      if (scrolled > heroHeight * 0.8) {
-        scrollIndicator.style.opacity = '0';
-        scrollIndicator.style.transform = 'translateY(20px)';
-      } else {
-        scrollIndicator.style.opacity = '1';
-        scrollIndicator.style.transform = 'translateY(0)';
-      }
-    }
-  });
-}
+// Animation de parallax pour le hero (utilisée dans optimizedScrollHandler)
 
 // Animation de loading pour les images
 function initImageLoading() {
@@ -195,7 +169,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
         submitButton.style.background = '';
       }, 2000);
       
-      console.error('Erreur:', error);
+      // Erreur silencieuse pour éviter de polluer la console
     })
     .finally(() => {
       submitButton.disabled = false;
@@ -547,8 +521,10 @@ document.addEventListener('DOMContentLoaded', () => {
   optimizeAnimationsForMobile();
   
   // Initialiser toutes les animations
-  initTypingAnimation();
-  createFloatingParticles();
+  if (window.innerWidth > 768) {
+    initTypingAnimation();
+    createFloatingParticles();
+  }
   initScrollReveal();
   initCardAnimations();
   initImageLoading();

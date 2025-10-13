@@ -233,9 +233,6 @@ button[type="submit"]:active::before {
 }
 
 /* ========================= */
-/* RESEAUX SOCIAUX */
-/* ========================= */
-/* ========================= */
 /* ICÔNES SOCIALES PARFAITES */
 /* ========================= */
 
@@ -265,22 +262,23 @@ button[type="submit"]:active::before {
 .social-icons a::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #f97316, #3b82f6);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  opacity: 0.8;
+  transition: top 0.4s, opacity 0.3s;
   border-radius: 50%;
 }
 
 .social-icons a:hover::before {
+  top: 0;
   opacity: 1;
 }
 
 .social-icons a:hover {
-  transform: translateY(-4px) scale(1.1);
+  transform: translateY(-4px) scale(1.1) rotate(5deg);
   box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
   border-color: #f97316;
   color: white;
@@ -288,25 +286,6 @@ button[type="submit"]:active::before {
 
 .social-icons a:active {
   transform: translateY(-2px) scale(1.05);
-}
-
-.social-icons a::before {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transition: top 0.4s;
-}
-
-.social-icons a:hover::before {
-  top: 0;
-}
-
-.social-icons a:hover {
-  transform: scale(1.2) rotate(5deg);
 }
 
 /* ========================= */
@@ -1258,64 +1237,7 @@ html {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Amélioration des couleurs principales */
-.text-orange-500 {
-  color: #f97316 !important;
-}
-
-.bg-orange-500 {
-  background-color: #f97316 !important;
-}
-
-.border-orange-500 {
-  border-color: #f97316 !important;
-}
-
-/* Amélioration des gradients */
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
-}
-
-.from-orange-500 {
-  --tw-gradient-from: #f97316 !important;
-  --tw-gradient-to: rgba(249, 115, 22, 0) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-.to-pink-500 {
-  --tw-gradient-to: #ec4899 !important;
-}
-
-/* Amélioration des bordures */
-.border {
-  border-color: #e5e7eb !important;
-}
-
-.dark .border {
-  border-color: #374151 !important;
-}
-
-/* Amélioration des ombres */
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-}
-
-.dark .shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Amélioration des backgrounds */
-.bg-white {
-  background-color: #ffffff !important;
-}
-
-.dark .bg-gray-800 {
-  background-color: #1f2937 !important;
-}
-
-.dark .bg-gray-900 {
-  background-color: #0f172a !important;
-}
+/* Supprimé - duplication avec la section précédente */
 
 /* Amélioration des gradients de fond */
 .bg-gradient-to-br {
@@ -2713,6 +2635,36 @@ body {
 .bg-gradient-to-l {
   background-clip: padding-box;
   -webkit-background-clip: padding-box;
+}
+
+/* Amélioration de l'affichage des badges */
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+/* Amélioration de l'affichage des ombres */
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.dark .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 /* Amélioration de l'affichage des badges */

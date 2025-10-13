@@ -17,9 +17,15 @@
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/images/logo.jpg">
+  <!-- Préchargement des ressources critiques -->
+  <link rel="preload" href="assets/videos/logo.mp4" as="video" type="video/mp4">
+  <link rel="preload" href="assets/images/logo.jpg" as="image">
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://unpkg.com">
   <!-- Tailwind config doit être défini avant le CDN -->
   <script>
-    tailwind = { config: { darkMode: 'class' } };
+    window.tailwind = { config: { darkMode: 'class' } };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS (animations au scroll) -->
@@ -53,7 +59,8 @@
 
   <!-- Navigation sticky -->
   <nav
-    class="fixed top-0 inset-x-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-300 dark:border-gray-700 shadow-lg">
+    class="fixed top-0 inset-x-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-300 dark:border-gray-700 shadow-lg"
+    role="navigation" aria-label="Navigation principale">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <a href="#home" class="flex items-center gap-3">
@@ -147,9 +154,10 @@
       <div class="mb-8 relative pulse-glow-advanced" data-aos="fade-up">
         <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl scale-110 morph">
         </div>
-        <video autoplay loop muted playsinline preload="metadata" poster="assets/images/logo.jpg" controls
+        <video autoplay loop muted playsinline preload="metadata" poster="assets/images/logo.jpg"
           class="hero-video w-48 sm:w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl relative z-10 border-2 border-orange-500/30 wave"
-          style="background:#000; display:block; max-width:100%; height:auto; object-fit:cover;">
+          style="background:#000; display:block; max-width:100%; height:auto; object-fit:cover;"
+          aria-label="Vidéo de présentation Dialil Dev">
           <source src="assets/videos/logo.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>
@@ -203,7 +211,7 @@
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div data-aos="fade-right">
         <img src="assets/images/photo-coding.jpg" alt="Photo de moi en train de coder"
-          class="w-full h-80 object-cover rounded-2xl shadow-xl">
+          class="w-full h-80 object-cover rounded-2xl shadow-xl" loading="lazy" decoding="async">
       </div>
       <div data-aos="fade-left">
         <div class="space-y-6">
@@ -513,7 +521,7 @@
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up">
           <div class="relative h-56 overflow-hidden">
             <img src="assets/images/projet-netflix.jpg" alt="Affiche publicitaire Netflix"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -526,8 +534,8 @@
               <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded">Design</span>
             </div>
             <div class="mt-4 flex gap-3">
-              <a href="#" class="text-orange-600 hover:underline">Voir</a>
-              <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">Détails</a>
+              <a href="assets/images/projet-netflix.jpg" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline" aria-label="Voir l'affiche Netflix en grand">Voir</a>
+              <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:underline" aria-label="Me contacter pour un projet similaire">Me contacter</a>
             </div>
           </div>
         </article>
@@ -535,7 +543,7 @@
           data-aos-delay="150">
           <div class="relative h-56 overflow-hidden">
             <img src="assets/images/projet-poulet.jpg" alt="Affiche publicitaire poulet"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -547,8 +555,8 @@
               <span class="px-2 py-1 bg-green-100 text-green-700 rounded">Marketing</span>
             </div>
             <div class="mt-4 flex gap-3">
-              <a href="#" class="text-orange-600 hover:underline">Voir</a>
-              <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">Détails</a>
+              <a href="assets/images/projet-poulet.jpg" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline" aria-label="Voir l'affiche poulet en grand">Voir</a>
+              <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:underline" aria-label="Me contacter pour un projet similaire">Me contacter</a>
             </div>
           </div>
         </article>
@@ -556,7 +564,7 @@
           data-aos-delay="300">
           <div class="relative h-56 overflow-hidden">
             <img src="assets/images/logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
@@ -568,8 +576,8 @@
               <span class="px-2 py-1 bg-orange-100 text-orange-700 rounded">Logo</span>
             </div>
             <div class="mt-4 flex gap-3">
-              <a href="#" class="text-orange-600 hover:underline">Voir</a>
-              <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">Détails</a>
+              <a href="assets/images/logo-tuifoot2026.jpg" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline" aria-label="Voir le logo Tuifoot 2026 en grand">Voir</a>
+              <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:underline" aria-label="Me contacter pour un projet similaire">Me contacter</a>
             </div>
           </div>
         </article>
@@ -613,10 +621,11 @@
               <span>Livraison 7 jours</span>
             </li>
           </ul>
-          <button
-            class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-lg font-semibold">
+          <a href="#contact"
+            class="w-full block text-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Me contacter pour le package Basique">
             Choisir Basique
-          </button>
+          </a>
         </div>
 
         <!-- Package Premium -->
@@ -652,9 +661,10 @@
               <span>Support 3 mois</span>
             </li>
           </ul>
-          <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition">
+          <a href="#contact" class="w-full block text-center bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition"
+            aria-label="Me contacter pour le package Premium">
             Choisir Premium
-          </button>
+          </a>
         </div>
 
         <!-- Package Pro -->
@@ -686,10 +696,11 @@
               <span>Support 6 mois</span>
             </li>
           </ul>
-          <button
-            class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-lg font-semibold">
+          <a href="#contact"
+            class="w-full block text-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Me contacter pour le package Pro">
             Choisir Pro
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -755,7 +766,8 @@
         Prêt à donner vie à votre projet ? Parlons-en !
       </p>
       <form id="contactForm" action="https://formspree.io/f/xldpraeo" method="POST"
-        class="max-w-xl mx-auto flex flex-col gap-4" data-aos="fade-up">
+        class="max-w-xl mx-auto flex flex-col gap-4" data-aos="fade-up" 
+        aria-label="Formulaire de contact" novalidate>
         <label class="sr-only" for="name">Nom</label>
         <input id="name" name="name" type="text" placeholder="Nom" required
           class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
@@ -772,7 +784,7 @@
     </div>
   </section>
 
-  <footer class="bg-gray-900 dark:bg-black text-gray-300 py-12 transition-colors">
+  <footer class="bg-gray-900 dark:bg-black text-gray-300 py-12 transition-colors" role="contentinfo" aria-label="Pied de page">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-8 mb-8">
         <!-- Contact Info -->

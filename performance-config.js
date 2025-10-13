@@ -127,9 +127,9 @@ function measurePerformance() {
       });
     }
     
-    // Afficher un warning si les performances sont mauvaises
+    // Surveiller les performances (silencieux en production)
     if (loadTime > PerformanceConfig.performance.performanceThreshold * 10) {
-      console.warn('Performance dégradée détectée:', loadTime + 'ms');
+      // Performance dégradée détectée - à surveiller
     }
   }
 }
