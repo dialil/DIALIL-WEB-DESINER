@@ -1051,17 +1051,15 @@ header {
   }
 }
 
-/* Optimisation GPU maximale */
+/* Optimisation GPU pour les animations */
 .floating-particle,
 .animate-gradient-x,
 .pulse-glow-advanced,
-.card-hover,
-.confetti-particle {
-  will-change: transform, opacity;
-  transform: translate3d(0, 0, 0);
+.card-hover {
+  will-change: transform;
+  transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
-  contain: layout style paint;
 }
 
 /* Optimisation des images */
@@ -1101,25 +1099,18 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Optimisation performances mobiles maximale */
+/* Optimisation des performances mobiles */
 @media (max-width: 768px) {
-  .floating-particle,
-  .confetti-particle {
-    display: none !important;
+  .floating-particle {
+    display: none;
   }
   
-  .animate-gradient-x,
-  .pulse-glow-advanced,
-  .morph,
-  .wave {
-    animation: none !important;
-    transform: none !important;
+  .animate-gradient-x {
+    animation: none;
   }
   
-  /* Force hardware acceleration sur mobile */
-  .card-hover {
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.2s ease;
+  .pulse-glow-advanced {
+    animation: none;
   }
 }
 
@@ -1127,7 +1118,8 @@ html {
 /* OPTIMISATION VISIBILITÉ */
 /* ========================= */
 
-/* Texte en dégradé sécurisé avec fallback */
+/* Rendre le texte en dégradé compatible mobile (Safari iOS)
+   et éviter le texte invisible en mode clair avec text-transparent */
 .bg-clip-text {
   color: #f97316 !important; /* Fallback orange */
   -webkit-background-clip: text;
