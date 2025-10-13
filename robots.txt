@@ -1,3 +1,21 @@
 User-agent: *
 Allow: /
-Sitemap: https://votre-domaine.tld/sitemap.xml
+
+# Sitemap
+Sitemap: https://dialil-dev.com/sitemap.xml
+
+# Désactiver l'indexation des fichiers de sauvegarde
+Disallow: /css/style-backup.css
+Disallow: /js/script-backup.js
+
+# Désactiver l'indexation des fichiers de test
+Disallow: /test*.html
+
+# Permettre l'indexation des ressources importantes
+Allow: /assets/images/
+Allow: /assets/videos/
+Allow: /css/style.css
+Allow: /js/script.js
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1

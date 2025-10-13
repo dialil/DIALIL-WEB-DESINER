@@ -1,180 +1,187 @@
-// Configuration des performances pour le portfolio Dialil Dev
+// =========================
+// CONFIGURATION PERFORMANCE
+// =========================
 
-const PerformanceConfig = {
-  // Configuration des animations
-  animations: {
-    // Désactiver les animations sur mobile pour les performances
-    disableOnMobile: true,
-    // Désactiver les animations si l'utilisateur préfère les réduire
-    respectReducedMotion: true,
-    // Délai d'initialisation des animations
-    initDelay: 100,
-    // Durée maximale des animations
-    maxDuration: 1000
-  },
-  
-  // Configuration du lazy loading
+// Configuration pour l'optimisation des performances
+const PERFORMANCE_CONFIG = {
+  // Lazy loading
   lazyLoading: {
-    // Délai avant de charger les images
+    enabled: true,
     threshold: 0.1,
-    // Root margin pour le chargement anticipé
-    rootMargin: '50px',
-    // Délai de fallback pour les navigateurs anciens
-    fallbackDelay: 2000
+    rootMargin: '50px'
   },
   
-  // Configuration des images
+  // Images
   images: {
-    // Qualité des images (0-100)
     quality: 85,
-    // Format préféré (webp, jpeg, png)
-    preferredFormat: 'webp',
-    // Taille maximale des images
-    maxWidth: 1920,
-    maxHeight: 1080
+    format: 'webp',
+    fallback: 'jpg',
+    sizes: {
+      mobile: '480w',
+      tablet: '768w',
+      desktop: '1200w'
+    }
   },
   
-  // Configuration du cache
+  // Animations
+  animations: {
+    reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    mobileOptimized: window.innerWidth < 768,
+    duration: 1000
+  },
+  
+  // Cache
   cache: {
-    // Durée de cache pour les ressources statiques (en secondes)
-    staticResources: 31536000, // 1 an
-    // Durée de cache pour le HTML (en secondes)
-    html: 3600, // 1 heure
-    // Durée de cache pour les API (en secondes)
-    api: 300 // 5 minutes
-  },
-  
-  // Configuration des performances
-  performance: {
-    // Seuil de performance (en ms)
-    performanceThreshold: 100,
-    // Délai d'initialisation des scripts non critiques
-    nonCriticalScriptsDelay: 2000,
-    // Préchargement des ressources critiques
-    preloadCriticalResources: true,
-    // Compression des données
-    enableCompression: true
-  },
-  
-  // Configuration mobile
-  mobile: {
-    // Désactiver les animations coûteuses
-    disableExpensiveAnimations: true,
-    // Réduire la qualité des images
-    reduceImageQuality: true,
-    // Limiter le nombre de particules
-    maxParticles: 5,
-    // Désactiver le parallax
-    disableParallax: true
-  },
-  
-  // Configuration des analytics
-  analytics: {
-    // Délai d'initialisation des analytics
-    initDelay: 3000,
-    // Événements à tracker
-    trackEvents: [
-      'contact_form_submit',
-      'service_click',
-      'portfolio_view',
-      'pricing_view',
-      'scroll_depth',
-      'time_on_page'
-    ],
-    // Seuil de scroll pour tracker l'engagement
-    scrollThresholds: [25, 50, 75, 100]
-  }
-};
-
-// Fonction pour appliquer la configuration
-function applyPerformanceConfig() {
-  // Appliquer les optimisations selon la configuration
-  if (PerformanceConfig.animations.disableOnMobile && window.innerWidth < 768) {
-    document.body.classList.add('no-animations');
-  }
-  
-  if (PerformanceConfig.mobile.disableExpensiveAnimations && window.innerWidth < 768) {
-    const expensiveElements = document.querySelectorAll('.floating-particle, .animate-gradient-x, .pulse-glow-advanced');
-    expensiveElements.forEach(el => {
-      el.style.display = 'none';
-    });
-  }
-  
-  // Appliquer les optimisations d'images
-  if (PerformanceConfig.mobile.reduceImageQuality && window.innerWidth < 768) {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-      img.style.imageRendering = 'optimizeSpeed';
-    });
-  }
-}
-
-// Fonction pour mesurer les performances
-function measurePerformance() {
-  if ('performance' in window) {
-    const perfData = performance.getEntriesByType('navigation')[0];
-    
-    // Mesurer le temps de chargement
-    const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
-    const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
-    
-    // Envoyer les données d'analytics si configuré
-    if (PerformanceConfig.analytics.trackEvents.includes('performance_metrics')) {
-      gtag('event', 'performance_metrics', {
-        'event_category': 'performance',
-        'event_label': 'page_load',
-        'value': Math.round(loadTime)
-      });
+    version: '1.0.0',
+    maxAge: 31536000, // 1 year
+    strategies: {
+      images: 'cache-first',
+      css: 'cache-first',
+      js: 'cache-first'
     }
-    
-    // Afficher un warning si les performances sont mauvaises
-    if (loadTime > PerformanceConfig.performance.performanceThreshold * 10) {
-      console.warn('Performance dégradée détectée:', loadTime + 'ms');
-    }
-  }
-}
-
-// Fonction pour optimiser les ressources
-function optimizeResources() {
-  // Précharger les ressources critiques
-  if (PerformanceConfig.performance.preloadCriticalResources) {
-    const criticalResources = [
+  },
+  
+  // Preload
+  preload: {
+    critical: [
       'assets/images/logo.jpg',
       'assets/images/photo-coding.jpg',
       'css/style.css',
       'js/script.js'
-    ];
+    ],
+    fonts: [],
+    scripts: [
+      'https://cdn.tailwindcss.com',
+      'https://unpkg.com/aos@2.3.1/dist/aos.js'
+    ]
+  }
+};
+
+// Fonction pour optimiser les images
+function optimizeImages() {
+  const images = document.querySelectorAll('img');
+  
+  images.forEach(img => {
+    // Ajouter des attributs de performance
+    img.setAttribute('decoding', 'async');
+    img.setAttribute('loading', 'lazy');
     
-    criticalResources.forEach(resource => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.href = resource;
-      
-      if (resource.endsWith('.css')) {
-        link.as = 'style';
-      } else if (resource.endsWith('.js')) {
-        link.as = 'script';
-      } else if (resource.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
-        link.as = 'image';
+    // Optimiser le format d'image si supporté
+    if (supportsWebP()) {
+      const src = img.src;
+      if (src && src.includes('.jpg')) {
+        img.src = src.replace('.jpg', '.webp');
+        img.onerror = () => {
+          img.src = src; // Fallback vers l'original
+        };
       }
-      
-      document.head.appendChild(link);
-    });
+    }
+  });
+}
+
+// Vérifier le support WebP
+function supportsWebP() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1;
+  canvas.height = 1;
+  return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+}
+
+// Optimiser les polices
+function optimizeFonts() {
+  // Précharger les polices critiques
+  const fontLink = document.createElement('link');
+  fontLink.rel = 'preload';
+  fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap';
+  fontLink.as = 'style';
+  fontLink.onload = () => {
+    fontLink.rel = 'stylesheet';
+  };
+  document.head.appendChild(fontLink);
+}
+
+// Optimiser les scripts
+function optimizeScripts() {
+  // Charger les scripts non critiques de manière asynchrone
+  const nonCriticalScripts = [
+    'https://unpkg.com/aos@2.3.1/dist/aos.js'
+  ];
+  
+  nonCriticalScripts.forEach(src => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  });
+}
+
+// Optimiser les CSS
+function optimizeCSS() {
+  // Charger les CSS non critiques de manière asynchrone
+  const nonCriticalCSS = [
+    'https://unpkg.com/aos@2.3.1/dist/aos.css'
+  ];
+  
+  nonCriticalCSS.forEach(href => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = href;
+    link.as = 'style';
+    link.onload = () => {
+      link.rel = 'stylesheet';
+    };
+    document.head.appendChild(link);
+  });
+}
+
+// Service Worker pour le cache
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('Service Worker enregistré:', registration);
+      })
+      .catch(error => {
+        console.log('Erreur Service Worker:', error);
+      });
   }
 }
 
-// Initialisation des optimisations
-document.addEventListener('DOMContentLoaded', () => {
-  applyPerformanceConfig();
-  optimizeResources();
+// Initialiser les optimisations
+function initPerformanceOptimizations() {
+  // Optimiser les images
+  optimizeImages();
   
-  // Mesurer les performances après le chargement
-  window.addEventListener('load', () => {
-    setTimeout(measurePerformance, 1000);
-  });
-});
+  // Optimiser les polices
+  optimizeFonts();
+  
+  // Optimiser les scripts
+  optimizeScripts();
+  
+  // Optimiser les CSS
+  optimizeCSS();
+  
+  // Enregistrer le Service Worker
+  registerServiceWorker();
+}
 
-// Export pour utilisation dans d'autres scripts
+// Démarrer les optimisations quand le DOM est prêt
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPerformanceOptimizations);
+} else {
+  initPerformanceOptimizations();
+}
+
+// Exporter pour utilisation externe
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = PerformanceConfig;
+  module.exports = {
+    PERFORMANCE_CONFIG,
+    optimizeImages,
+    optimizeFonts,
+    optimizeScripts,
+    optimizeCSS,
+    registerServiceWorker,
+    initPerformanceOptimizations
+  };
 }
