@@ -5,25 +5,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dialil Dev - Portfolio</title>
-  <meta name="description" content="Portfolio de Dialil Dev : sites modernes, logos uniques, support digital.">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Portfolio professionnel de Dialil Dev - Développeur web & designer créatif au Sénégal. Sites modernes, logos uniques, e-commerce, support digital. Délais respectés, résultats garantis.">
+  <meta name="keywords" content="développeur web, designer, portfolio, sénégal, sites web, logos, e-commerce, développement, création, identité visuelle, branding, dakar, thiès">
+  <meta name="author" content="Dialil Dev">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
+  <meta name="msapplication-TileColor" content="#f97316">
+  <meta name="msapplication-config" content="browserconfig.xml">
   <meta property="og:title" content="Dialil Dev - Portfolio">
   <meta property="og:description" content="Sites modernes et logos uniques pour booster votre identité digitale.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/logo.jpg">
-  <meta property="og:url" content="https://votre-domaine.tld">
+  <meta property="og:url" content="https://dialil-dev.com">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dialil Dev - Portfolio">
+  <meta name="twitter:description" content="Sites modernes et logos uniques pour booster votre identité digitale.">
+  <meta name="twitter:image" content="assets/images/logo.jpg">
   <link rel="icon" type="image/png" href="assets/images/logo.jpg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="assets/images/logo.jpg" as="image">
+  <link rel="preload" href="assets/images/photo-coding.jpg" as="image">
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="preload" href="js/script.js" as="script">
+  
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="//unpkg.com">
+  <link rel="dns-prefetch" href="//formspree.io">
   <!-- Tailwind config doit être défini avant le CDN -->
   <script>
     tailwind = { config: { darkMode: 'class' } };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS (animations au scroll) -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
   <!-- CSS personnalisée -->
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
@@ -31,9 +52,22 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Dialil Dev",
-    "url": "https://votre-domaine.tld",
-    "image": "assets/images/logo.jpg",
-    "jobTitle": "Développeur web & designer",
+    "alternateName": "Cherif Dialil Ndiaye",
+    "url": "https://dialil-dev.com",
+    "image": "https://dialil-dev.com/assets/images/logo.jpg",
+    "jobTitle": "Développeur web & designer créatif",
+    "description": "Développeur web et designer créatif au Sénégal, spécialisé dans la création de sites modernes et d'identités visuelles uniques.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SN",
+      "addressRegion": "Thiès"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+221-78-54-18-331",
+      "contactType": "customer service",
+      "availableLanguage": ["French", "English"]
+    },
     "sameAs": [
       "https://instagram.com/dialil_ndiaye",
       "https://wa.me/221785418331",
@@ -41,10 +75,24 @@
     ],
     "knowsAbout": [
       "Développement Web",
-      "Design",
+      "Design Graphique",
       "E-commerce",
-      "Branding"
-    ]
+      "Branding",
+      "Identité Visuelle",
+      "Sites Responsive",
+      "SEO",
+      "JavaScript",
+      "CSS",
+      "HTML"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Développement de sites web",
+        "description": "Création de sites web modernes et performants"
+      }
+    }
   }
   </script>
 </head>
@@ -53,23 +101,24 @@
 
   <!-- Navigation sticky -->
   <nav
-    class="fixed top-0 inset-x-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-300 dark:border-gray-700 shadow-lg">
+    class="fixed top-0 inset-x-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-300 dark:border-gray-700 shadow-lg"
+    role="navigation" aria-label="Navigation principale">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <a href="#home" class="flex items-center gap-3">
           <img src="assets/images/logo.jpg" alt="Dialil Dev" class="w-9 h-9 rounded-lg object-cover">
           <span class="font-semibold text-gray-900 dark:text-gray-100">Dialil Dev</span>
         </a>
-        <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-          <a href="#about"
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium" role="menubar">
+          <a href="#about" role="menuitem"
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">À propos</a>
-          <a href="#services"
+          <a href="#services" role="menuitem"
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Services</a>
-          <a href="#portfolio"
+          <a href="#portfolio" role="menuitem"
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Portfolio</a>
-          <a href="#pricing"
+          <a href="#pricing" role="menuitem"
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Tarifs</a>
-          <a href="#contact"
+          <a href="#contact" role="menuitem"
             class="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors duration-300">Contact</a>
           
           <!-- Bouton Mode Sombre/Clair -->
@@ -84,7 +133,7 @@
             </svg>
           </button>
         </div>
-        <button id="burger" aria-label="Ouvrir le menu" aria-expanded="false"
+        <button id="burger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileMenu"
           class="md:hidden p-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 bg-white dark:bg-gray-900 shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -93,22 +142,23 @@
       </div>
     </div>
     <div id="mobileMenu"
-      class="md:hidden hidden border-t border-gray-300 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
+      class="md:hidden hidden border-t border-gray-300 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
+      role="menu" aria-label="Menu mobile">
       <div class="px-4 py-4 flex flex-col gap-2">
-        <a href="#about"
+        <a href="#about" role="menuitem"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">À
           propos</a>
-        <a href="#services"
+        <a href="#services" role="menuitem"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Services</a>
-        <a href="#portfolio"
+        <a href="#portfolio" role="menuitem"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Portfolio</a>
-        <a href="#pricing"
+        <a href="#pricing" role="menuitem"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Tarifs</a>
-        <a href="#contact"
+        <a href="#contact" role="menuitem"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium">Contact</a>
         
         <!-- Bouton Mode Sombre/Clair Mobile -->
-        <button id="darkModeToggleMobile" 
+        <button id="darkModeToggleMobile" aria-label="Basculer le mode sombre"
           class="py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-orange-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium flex items-center gap-3">
           <svg id="sunIconMobile" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
@@ -125,7 +175,8 @@
 
   <!-- HERO -->
   <header id="home"
-    class="pt-16 h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
+    class="pt-16 h-screen flex flex-col justify-center items-center text-center relative overflow-hidden"
+    role="banner">
     <!-- Background avec effet parallax -->
     <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-gray-900"></div>
     <div class="absolute inset-0 bg-black/20"></div>
@@ -149,7 +200,8 @@
         </div>
         <video autoplay loop muted playsinline preload="metadata" poster="assets/images/logo.jpg" controls
           class="hero-video w-48 sm:w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl relative z-10 border-2 border-orange-500/30 wave"
-          style="background:#000; display:block; max-width:100%; height:auto; object-fit:cover;">
+          style="background:#000; display:block; max-width:100%; height:auto; object-fit:cover;"
+          aria-label="Vidéo de présentation de Dialil Dev">
           <source src="assets/videos/logo.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>
@@ -198,12 +250,12 @@
   </header>
 
   <!-- A PROPOS -->
-  <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900 relative z-10" id="about">
-    <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">À propos</h2>
+  <section class="py-20 max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900 relative z-10" id="about" aria-labelledby="about-title" role="region">
+    <h2 id="about-title" class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">À propos</h2>
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div data-aos="fade-right">
-        <img src="assets/images/photo-coding.jpg" alt="Photo de moi en train de coder"
-          class="w-full h-80 object-cover rounded-2xl shadow-xl">
+        <img src="assets/images/photo-coding.jpg" alt="Photo de Dialil Dev en train de coder sur son ordinateur"
+          class="w-full h-80 object-cover rounded-2xl shadow-xl" loading="lazy">
       </div>
       <div data-aos="fade-left">
         <div class="space-y-6">
@@ -272,9 +324,9 @@
 
   <!-- TÉMOIGNAGES -->
   <section class="py-20 bg-gradient-to-br from-blue-50 to-orange-50 dark:from-blue-900/20 dark:to-orange-900/20"
-    id="testimonials">
+    id="testimonials" role="region" aria-labelledby="testimonials-title">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">
+      <h2 id="testimonials-title" class="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-12" data-aos="fade-down">
         Ce que disent mes clients
       </h2>
       <div class="grid md:grid-cols-3 gap-8">
@@ -367,14 +419,14 @@
   <!-- SERVICES -->
   <section
     class="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20 relative overflow-hidden"
-    id="services">
+    id="services" role="region" aria-labelledby="services-title">
     <!-- Effet de circuit en arrière-plan -->
     <div class="absolute inset-0 circuit-pattern opacity-10"></div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
-      <h2
+      <h2 id="services-title"
         class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
-        data-aos="fade-down" aria-label="Mes Services">
+        data-aos="fade-down">
         Mes Services
       </h2>
       <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
@@ -503,21 +555,21 @@
   </section>
 
   <!-- PORTFOLIO -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" id="portfolio">
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" id="portfolio" role="region" aria-labelledby="portfolio-title">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">Portfolio
+      <h2 id="portfolio-title" class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">Portfolio
       </h2>
       <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">Mes créations récentes qui
         parlent d'elles-mêmes</p>
       <div class="grid gap-8 md:grid-cols-3">
-        <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up">
+        <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up" role="article" aria-labelledby="netflix-project">
           <div class="relative h-56 overflow-hidden">
-            <img src="assets/images/projet-netflix.jpg" alt="Affiche publicitaire Netflix"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="assets/images/projet-netflix.jpg" alt="Affiche publicitaire Netflix créée par Dialil Dev"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
-            <h3 class="font-semibold text-lg">Affiche Netflix — Design publicitaire</h3>
+            <h3 id="netflix-project" class="font-semibold text-lg">Affiche Netflix — Design publicitaire</h3>
             <p class="text-sm text-gray-600 dark:text-gray-300">Création d'affiche pour vente de comptes Netflix
               premium.
             </p>
@@ -532,14 +584,14 @@
           </div>
         </article>
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
-          data-aos-delay="150">
+          data-aos-delay="150" role="article" aria-labelledby="poulet-project">
           <div class="relative h-56 overflow-hidden">
-            <img src="assets/images/projet-poulet.jpg" alt="Affiche publicitaire poulet"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="assets/images/projet-poulet.jpg" alt="Affiche publicitaire pour entreprise de vente de poulets"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
-            <h3 class="font-semibold text-lg">Affiche Poulet — Marketing alimentaire</h3>
+            <h3 id="poulet-project" class="font-semibold text-lg">Affiche Poulet — Marketing alimentaire</h3>
             <p class="text-sm text-gray-600 dark:text-gray-300">Design d'affiche pour entreprise de vente de poulets de
               chair.</p>
             <div class="mt-2 flex gap-2 text-xs">
@@ -553,14 +605,14 @@
           </div>
         </article>
         <article class="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800" data-aos="fade-up"
-          data-aos-delay="300">
+          data-aos-delay="300" role="article" aria-labelledby="tuifoot-project">
           <div class="relative h-56 overflow-hidden">
-            <img src="assets/images/logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="assets/images/logo-tuifoot2026.jpg" alt="Logo Tuifoot 2026 créé pour l'École Polytechnique de Thiès"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div class="p-5 flex flex-col gap-2">
-            <h3 class="font-semibold text-lg">Logo Tuifoot 2026 — École Polytechnique</h3>
+            <h3 id="tuifoot-project" class="font-semibold text-lg">Logo Tuifoot 2026 — École Polytechnique</h3>
             <p class="text-sm text-gray-600 dark:text-gray-300">Logo pour tournoi international de sport de l'École
               Polytechnique de Thiès.</p>
             <div class="mt-2 flex gap-2 text-xs">
@@ -578,9 +630,9 @@
   </section>
 
   <!-- TARIFS -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" id="pricing">
+  <section class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" id="pricing" role="region" aria-labelledby="pricing-title">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
+      <h2 id="pricing-title" class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
         Mes tarifs transparents
       </h2>
       <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
@@ -696,9 +748,9 @@
   </section>
 
   <!-- FAQ -->
-  <section class="py-20 bg-white dark:bg-gray-800 transition-colors" id="faq">
+  <section class="py-20 bg-white dark:bg-gray-800 transition-colors" id="faq" role="region" aria-labelledby="faq-title">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
+      <h2 id="faq-title" class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
         Questions fréquentes
       </h2>
       <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
@@ -747,15 +799,15 @@
   <!-- CONTACT -->
   <section
     class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 transition-colors"
-    id="contact">
+    id="contact" role="region" aria-labelledby="contact-title">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
+      <h2 id="contact-title" class="text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-4" data-aos="fade-down">
         Contactez-moi</h2>
       <p class="text-center text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up">
         Prêt à donner vie à votre projet ? Parlons-en !
       </p>
       <form id="contactForm" action="https://formspree.io/f/xldpraeo" method="POST"
-        class="max-w-xl mx-auto flex flex-col gap-4" data-aos="fade-up">
+        class="max-w-xl mx-auto flex flex-col gap-4" data-aos="fade-up" role="form" aria-labelledby="contact-title">
         <label class="sr-only" for="name">Nom</label>
         <input id="name" name="name" type="text" placeholder="Nom" required
           class="p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
@@ -852,10 +904,15 @@
   </footer>
 
   <!-- JS -->
-  <script src="js/script.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
+    // Initialize AOS when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 1000, once: true });
+      }
+    });
   </script>
 </body>
 
