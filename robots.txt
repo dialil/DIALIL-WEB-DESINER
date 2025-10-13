@@ -1,20 +1,3 @@
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://dialil-dev.com/sitemap.xml
-
-# Crawl-delay pour éviter la surcharge
-Crawl-delay: 1
-
-# Interdire l'indexation des fichiers de test
-Disallow: /test*.html
-
-# Permettre l'indexation des ressources importantes
-Allow: /assets/
-Allow: /css/
-Allow: /js/
-Allow: /docs/
-
-# Informations de contact
-# Contact: dialilndiaye1204@gmail.com
+Sitemap: https://votre-domaine.tld/sitemap.xml

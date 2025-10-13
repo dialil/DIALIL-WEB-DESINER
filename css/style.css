@@ -3,6 +3,7 @@ html {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scroll-padding-top: 80px; /* Pour éviter que le contenu soit caché sous la nav */
+  color-scheme: light dark;
 }
 
 /* Optimisation mobile */
@@ -1814,15 +1815,15 @@ nav {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Navigation links */
+/* Navigation links (contraste élevé par défaut) */
 nav a {
-  color: #374151 !important;
-  font-weight: 500 !important;
-  transition: all 0.3s ease !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  transition: color 0.2s ease !important;
 }
 
 .dark nav a {
-  color: #d1d5db !important;
+  color: #f1f5f9 !important;
 }
 
 nav a:hover {
