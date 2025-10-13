@@ -4,6 +4,7 @@ Allow: /
 <<<<<<< Current (Your changes)
 <<<<<<< Current (Your changes)
 <<<<<<< Current (Your changes)
+<<<<<<< Current (Your changes)
 
 # Sitemap
 Sitemap: https://dialil-dev.com/sitemap.xml
@@ -23,6 +24,9 @@ Allow: /js/script.js
 
 # Crawl-delay pour éviter la surcharge
 Crawl-delay: 1
+=======
+Sitemap: https://dialil-dev.com/sitemap.xml
+>>>>>>> Incoming (Background Agent changes)
 =======
 Sitemap: https://dialil-dev.com/sitemap.xml
 >>>>>>> Incoming (Background Agent changes)
