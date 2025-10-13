@@ -185,6 +185,14 @@ if (contactForm) {
       message: message.substring(0, 1000)
     };
 
+    // Génération de token sécurisé dynamique
+    const generateToken = () => {
+      const array = new Uint8Array(16);
+      crypto.getRandomValues(array);
+      return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+    };
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || generateToken();
+    
     fetch('https://formspree.io/f/xldpraeo', {
       method: 'POST',
       headers: {
@@ -192,7 +200,13 @@ if (contactForm) {
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
       },
-      body: JSON.stringify(secureData)
+      body: JSON.stringify({
+        name: secureData.name,
+        email: secureData.email,
+        message: secureData.message,
+        _replyto: secureData.email,
+        _subject: 'Contact depuis dialil-dev.com'
+      })
     })
       .then(response => {
         if (response.ok) {
@@ -232,55 +246,66 @@ if (contactForm) {
   });
 }
 
-// Animation de confetti
+// Animation de confetti optimisée
 function createConfetti() {
-  const colors = ['#f97316', '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b'];
-  const fragment = document.createDocumentFragment();
+  if (window.innerWidth < 768) return; // Pas de confetti sur mobile
   
-  for (let i = 0; i < 20; i++) {
+  const colors = ['#f97316', '#3b82f6', '#8b5cf6', '#10b981'];
+  const fragment = document.createDocumentFragment();
+  const particleCount = Math.min(15, Math.floor(window.innerWidth / 100));
+  
+  for (let i = 0; i < particleCount; i++) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti-particle';
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const left = Math.random() * 100;
+    
+    const color = colors[i % colors.length];
+    const left = (i / particleCount) * 100;
+    const delay = i * 50;
     
     confetti.style.cssText = `
       position: fixed;
-      width: 6px;
-      height: 6px;
+      width: 4px;
+      height: 4px;
       background: ${color};
-      left: ${left}vw;
+      left: ${left}%;
       top: -10px;
       z-index: 1000;
-      animation: confetti-fall 1.5s linear forwards;
+      animation: confetti-fall 1s linear forwards;
+      animation-delay: ${delay}ms;
       pointer-events: none;
+      will-change: transform;
     `;
     
     fragment.appendChild(confetti);
-    
-    setTimeout(() => {
-      if (confetti.parentNode) {
-        confetti.parentNode.removeChild(confetti);
-      }
-    }, 1500);
   }
   
   document.body.appendChild(fragment);
+  
+  // Nettoyage optimisé
+  setTimeout(() => {
+    const particles = document.querySelectorAll('.confetti-particle');
+    particles.forEach(p => p.remove());
+  }, 1200);
 }
 
-// CSS pour l'animation de confetti (optimisé)
+// CSS pour l'animation de confetti (performance maximale)
 if (!document.getElementById('confetti-styles')) {
   const confettiStyle = document.createElement('style');
   confettiStyle.id = 'confetti-styles';
   confettiStyle.textContent = `
     @keyframes confetti-fall {
       0% {
-        transform: translateY(-100vh) rotate(0deg);
+        transform: translate3d(0, -100vh, 0) rotate(0deg);
         opacity: 1;
       }
       100% {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translate3d(0, 100vh, 0) rotate(180deg);
         opacity: 0;
       }
+    }
+    .confetti-particle {
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
   `;
   document.head.appendChild(confettiStyle);
@@ -304,22 +329,25 @@ if (burger && mobileMenu) {
   });
 }
 
-// Animation des statistiques optimisée
+// Animation des statistiques ultra-optimisée
 function animateCounter(elementId, targetValue, suffix = '') {
   const element = document.getElementById(elementId);
   if (!element || element.dataset.animated) return;
   
   element.dataset.animated = 'true';
-  let currentValue = 0;
-  const duration = 1000;
+  const duration = 800;
   const startTime = performance.now();
+  const startValue = 0;
   
   function updateCounter(timestamp) {
     const elapsed = timestamp - startTime;
     const progress = Math.min(elapsed / duration, 1);
     
-    currentValue = targetValue * progress;
-    element.textContent = Math.floor(currentValue) + suffix;
+    // Easing function pour animation fluide
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const currentValue = Math.floor(startValue + (targetValue - startValue) * easeProgress);
+    
+    element.textContent = currentValue + suffix;
     
     if (progress < 1) {
       requestAnimationFrame(updateCounter);

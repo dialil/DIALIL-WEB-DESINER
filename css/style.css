@@ -1051,15 +1051,17 @@ header {
   }
 }
 
-/* Optimisation GPU pour les animations */
+/* Optimisation GPU maximale */
 .floating-particle,
 .animate-gradient-x,
 .pulse-glow-advanced,
-.card-hover {
-  will-change: transform;
-  transform: translateZ(0);
+.card-hover,
+.confetti-particle {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
+  contain: layout style paint;
 }
 
 /* Optimisation des images */
@@ -1099,18 +1101,25 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Optimisation des performances mobiles */
+/* Optimisation performances mobiles maximale */
 @media (max-width: 768px) {
-  .floating-particle {
-    display: none;
+  .floating-particle,
+  .confetti-particle {
+    display: none !important;
   }
   
-  .animate-gradient-x {
-    animation: none;
+  .animate-gradient-x,
+  .pulse-glow-advanced,
+  .morph,
+  .wave {
+    animation: none !important;
+    transform: none !important;
   }
   
-  .pulse-glow-advanced {
-    animation: none;
+  /* Force hardware acceleration sur mobile */
+  .card-hover {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.2s ease;
   }
 }
 
