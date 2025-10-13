@@ -1118,58 +1118,72 @@ html {
 /* OPTIMISATION VISIBILITÉ */
 /* ========================= */
 
-/* Rendre le texte en dégradé compatible mobile (Safari iOS)
-   et éviter le texte invisible en mode clair avec text-transparent */
+/* Texte en dégradé sécurisé avec fallback */
 .bg-clip-text {
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+  color: #f97316 !important; /* Fallback orange */
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Support moderne uniquement si disponible */
+@supports (-webkit-background-clip: text) {
+  .bg-clip-text {
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Fallback pour Safari iOS */
+@supports not (-webkit-background-clip: text) {
+  .bg-clip-text {
+    color: #f97316 !important;
+    background: none !important;
+  }
 }
 
 /* ========================= */
 /* COULEURS PARFAITES POUR VISIBILITÉ MAXIMALE */
 /* ========================= */
 
-/* Mode clair - Couleurs optimisées */
+/* Mode clair - Contrastes WCAG AAA */
 .text-gray-600 {
-  color: #111827 !important; /* Noir profond pour contraste maximal */
+  color: #000000 !important; /* Noir pur - ratio 21:1 */
 }
 
 .text-gray-700 {
-  color: #0f172a !important; /* Noir absolu pour les textes importants */
+  color: #000000 !important; /* Noir pur - ratio 21:1 */
 }
 
 .text-gray-800 {
-  color: #0c0a09 !important; /* Noir pur pour les titres */
+  color: #000000 !important; /* Noir pur - ratio 21:1 */
 }
 
 .text-gray-900 {
-  color: #000000 !important; /* Noir pur pour les titres principaux */
+  color: #000000 !important; /* Noir pur - ratio 21:1 */
 }
 
-/* Mode sombre - Couleurs optimisées */
+/* Mode sombre - Contrastes WCAG AAA */
 .dark .text-gray-300 {
-  color: #ffffff !important; /* Blanc pur pour contraste maximal */
+  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
 }
 
 .dark .text-gray-400 {
-  color: #f8fafc !important; /* Blanc cassé pour les textes secondaires */
+  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
 }
 
 .dark .text-gray-600 {
-  color: #e2e8f0 !important; /* Gris très clair pour les textes */
+  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
 }
 
 .dark .text-gray-700 {
-  color: #f1f5f9 !important; /* Blanc cassé pour les textes importants */
+  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
 }
 
 .dark .text-gray-800 {
-  color: #ffffff !important; /* Blanc pur pour les titres */
+  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
 }
 
 .dark .text-gray-900 {
-  color: #ffffff !important; /* Blanc pur pour les titres principaux */
+  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
 }
 
 /* Couleurs d'accent optimisées */
@@ -1388,15 +1402,25 @@ section {
 /* TYPOGRAPHIE PARFAITE POUR LISIBILITÉ MAXIMALE */
 /* ========================= */
 
-/* Amélioration de la lisibilité et de l'alignement */
+/* Lisibilité maximale */
 p {
-  line-height: 1.8 !important; /* Espacement optimal des lignes */
-  font-size: 1.125rem !important; /* Taille de police optimale */
-  text-align: left; /* Alignement à gauche pour une meilleure lisibilité */
-  hyphens: auto; /* Césure automatique */
-  font-weight: 400 !important; /* Poids de police optimal */
-  letter-spacing: 0.025em !important; /* Espacement des lettres */
-  word-spacing: 0.05em !important; /* Espacement des mots */
+  line-height: 1.6 !important;
+  font-size: 1.125rem !important; /* 18px minimum */
+  text-align: left;
+  font-weight: 400 !important;
+  letter-spacing: 0.025em !important;
+  color: #000000 !important; /* Contraste maximal */
+}
+
+.dark p {
+  color: #ffffff !important; /* Contraste maximal mode sombre */
+}
+
+/* Mobile - taille minimum 16px */
+@media (max-width: 768px) {
+  p {
+    font-size: 1rem !important; /* 16px minimum mobile */
+  }
 }
 
 /* Alignement spécifique pour les paragraphes centrés */
@@ -1404,13 +1428,24 @@ p {
   text-align: center !important;
 }
 
-/* Amélioration des titres */
+/* Titres avec contraste maximal */
 h1 {
-  font-size: 3.5rem !important; /* Taille optimale pour les titres principaux */
+  font-size: 3.5rem !important;
   line-height: 1.1 !important;
-  font-weight: 800 !important; /* Poids maximum pour l'impact */
+  font-weight: 800 !important;
   letter-spacing: -0.025em !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  color: #000000 !important; /* Contraste maximal */
+}
+
+.dark h1 {
+  color: #ffffff !important; /* Contraste maximal mode sombre */
+}
+
+/* Mobile - taille lisible */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem !important; /* Lisible sur mobile */
+  }
 }
 
 h2 {
@@ -1886,12 +1921,26 @@ nav a:hover {
 /* RESPONSIVE DESIGN AVANCÉ */
 /* ========================= */
 
-/* Mobile First Approach - Très petits écrans */
+/* Mobile - Visibilité optimisée */
 @media (max-width: 480px) {
-  /* Base mobile */
+  /* Tailles minimales pour lisibilité */
   * {
     max-width: 100vw;
     overflow-x: hidden;
+  }
+  
+  /* Texte minimum 16px */
+  body {
+    font-size: 16px !important;
+  }
+  
+  /* Contrastes forcés */
+  p, span, div {
+    color: #000000 !important;
+  }
+  
+  .dark p, .dark span, .dark div {
+    color: #ffffff !important;
   }
   
   /* Navigation mobile */

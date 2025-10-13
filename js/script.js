@@ -185,7 +185,7 @@ if (contactForm) {
       message: message.substring(0, 1000)
     };
 
-    fetch('/contact', {
+    fetch('https://formspree.io/f/xldpraeo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -237,18 +237,21 @@ function createConfetti() {
   const colors = ['#f97316', '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b'];
   const fragment = document.createDocumentFragment();
   
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 20; i++) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti-particle';
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const left = Math.random() * 100;
+    
     confetti.style.cssText = `
       position: fixed;
-      width: 8px;
-      height: 8px;
-      background: ${colors[Math.floor(Math.random() * colors.length)]};
-      left: ${Math.random() * 100}vw;
+      width: 6px;
+      height: 6px;
+      background: ${color};
+      left: ${left}vw;
       top: -10px;
       z-index: 1000;
-      animation: confetti-fall 2s linear forwards;
+      animation: confetti-fall 1.5s linear forwards;
       pointer-events: none;
     `;
     
@@ -258,27 +261,30 @@ function createConfetti() {
       if (confetti.parentNode) {
         confetti.parentNode.removeChild(confetti);
       }
-    }, 2000);
+    }, 1500);
   }
   
   document.body.appendChild(fragment);
 }
 
-// CSS pour l'animation de confetti
-const confettiStyle = document.createElement('style');
-confettiStyle.textContent = `
-  @keyframes confetti-fall {
-    0% {
-      transform: translateY(-100vh) rotate(0deg);
-      opacity: 1;
+// CSS pour l'animation de confetti (optimisé)
+if (!document.getElementById('confetti-styles')) {
+  const confettiStyle = document.createElement('style');
+  confettiStyle.id = 'confetti-styles';
+  confettiStyle.textContent = `
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
     }
-    100% {
-      transform: translateY(100vh) rotate(720deg);
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(confettiStyle);
+  `;
+  document.head.appendChild(confettiStyle);
+}
 
 
 // Burger menu
