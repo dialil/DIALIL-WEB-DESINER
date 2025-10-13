@@ -109,69 +109,102 @@ function applyPerformanceConfig() {
   }
 }
 
-// Fonction pour mesurer les performances
+// Fonction pour mesurer les performances avec gestion d'erreurs
 function measurePerformance() {
-  if ('performance' in window) {
-    const perfData = performance.getEntriesByType('navigation')[0];
-    
-    // Mesurer le temps de chargement
-    const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
-    const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
-    
-    // Envoyer les données d'analytics si configuré
-    if (PerformanceConfig.analytics.trackEvents.includes('performance_metrics')) {
-      gtag('event', 'performance_metrics', {
-        'event_category': 'performance',
-        'event_label': 'page_load',
-        'value': Math.round(loadTime)
-      });
-    }
-    
-    // Afficher un warning si les performances sont mauvaises
-    if (loadTime > PerformanceConfig.performance.performanceThreshold * 10) {
-      console.warn('Performance dégradée détectée:', loadTime + 'ms');
-    }
-  }
-}
-
-// Fonction pour optimiser les ressources
-function optimizeResources() {
-  // Précharger les ressources critiques
-  if (PerformanceConfig.performance.preloadCriticalResources) {
-    const criticalResources = [
-      'assets/images/logo.jpg',
-      'assets/images/photo-coding.jpg',
-      'css/style.css',
-      'js/script.js'
-    ];
-    
-    criticalResources.forEach(resource => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.href = resource;
+  try {
+    if ('performance' in window && performance.getEntriesByType) {
+      const perfData = performance.getEntriesByType('navigation')[0];
       
-      if (resource.endsWith('.css')) {
-        link.as = 'style';
-      } else if (resource.endsWith('.js')) {
-        link.as = 'script';
-      } else if (resource.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
-        link.as = 'image';
+      if (perfData) {
+        // Mesurer le temps de chargement avec validation
+        const loadTime = perfData.loadEventEnd && perfData.loadEventStart ? 
+          perfData.loadEventEnd - perfData.loadEventStart : 0;
+        const domContentLoaded = perfData.domContentLoadedEventEnd && perfData.domContentLoadedEventStart ?
+          perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart : 0;
+        
+        // Envoyer les données d'analytics si configuré et gtag disponible
+        if (PerformanceConfig.analytics.trackEvents.includes('performance_metrics') && 
+            typeof gtag === 'function' && loadTime > 0) {
+          gtag('event', 'performance_metrics', {
+            'event_category': 'performance',
+            'event_label': 'page_load',
+            'value': Math.round(loadTime)
+          });
+        }
+        
+        // Afficher un warning si les performances sont mauvaises
+        if (loadTime > PerformanceConfig.performance.performanceThreshold * 10) {
+          console.warn('Performance dégradée détectée');
+        }
       }
-      
-      document.head.appendChild(link);
-    });
+    }
+  } catch (error) {
+    console.error('Erreur lors de la mesure des performances');
   }
 }
 
-// Initialisation des optimisations
+// Fonction pour optimiser les ressources avec gestion d'erreurs
+function optimizeResources() {
+  try {
+    // Précharger les ressources critiques
+    if (PerformanceConfig.performance.preloadCriticalResources) {
+      const criticalResources = [
+        'assets/images/logo.jpg',
+        'assets/images/photo-coding.jpg',
+        'css/style.css',
+        'js/script.js'
+      ];
+      
+      const fragment = document.createDocumentFragment();
+      
+      criticalResources.forEach(resource => {
+        try {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.href = resource;
+          
+          if (resource.endsWith('.css')) {
+            link.as = 'style';
+          } else if (resource.endsWith('.js')) {
+            link.as = 'script';
+          } else if (resource.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
+            link.as = 'image';
+          }
+          
+          fragment.appendChild(link);
+        } catch (error) {
+          console.error('Erreur lors du préchargement de la ressource');
+        }
+      });
+      
+      if (document.head) {
+        document.head.appendChild(fragment);
+      }
+    }
+  } catch (error) {
+    console.error('Erreur lors de l\'optimisation des ressources');
+  }
+}
+
+// Initialisation des optimisations avec gestion d'erreurs
 document.addEventListener('DOMContentLoaded', () => {
-  applyPerformanceConfig();
-  optimizeResources();
-  
-  // Mesurer les performances après le chargement
-  window.addEventListener('load', () => {
-    setTimeout(measurePerformance, 1000);
-  });
+  try {
+    applyPerformanceConfig();
+    optimizeResources();
+    
+    // Mesurer les performances après le chargement
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        try {
+          measurePerformance();
+        } catch (error) {
+          console.error('Erreur lors de la mesure des performances');
+        }
+      }, 1000);
+    });
+  } catch (error) {
+    console.error('Erreur lors de l\'initialisation des optimisations');
+  }
 });
 
 // Export pour utilisation dans d'autres scripts

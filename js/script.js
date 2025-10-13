@@ -153,26 +153,51 @@ if (contactForm) {
     e.preventDefault();
 
     const form = e.target;
-    const formData = new FormData(form);
     const submitButton = form.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
 
-    // Animation de chargement
-    submitButton.innerHTML = '<div class="loading-spinner"></div> Envoi en cours...';
+    // Validation des données
+    const name = form.querySelector('[name="name"]')?.value?.trim();
+    const email = form.querySelector('[name="email"]')?.value?.trim();
+    const message = form.querySelector('[name="message"]')?.value?.trim();
+    
+    if (!name || !email || !message) {
+      alert('Veuillez remplir tous les champs');
+      return;
+    }
+    
+    // Validation email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Veuillez entrer un email valide');
+      return;
+    }
+
+    // Animation de chargement sécurisée
+    submitButton.textContent = 'Envoi en cours...';
     submitButton.disabled = true;
     submitButton.classList.add('pulse-glow-advanced');
 
-    fetch(form.action, {
+    // Données sécurisées
+    const secureData = {
+      name: name.substring(0, 100),
+      email: email.substring(0, 100), 
+      message: message.substring(0, 1000)
+    };
+
+    fetch('/contact', {
       method: 'POST',
-      body: formData,
       headers: {
-        'Accept': 'application/json'
-      }
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify(secureData)
     })
       .then(response => {
         if (response.ok) {
-          // Animation de succès
-          submitButton.innerHTML = '✅ Envoyé !';
+          // Animation de succès sécurisée
+          submitButton.textContent = '✅ Envoyé !';
           submitButton.style.background = 'linear-gradient(45deg, #10b981, #059669)';
 
           // Confetti animation
@@ -188,8 +213,8 @@ if (contactForm) {
         }
       })
       .catch(error => {
-        // Animation d'erreur
-        submitButton.innerHTML = '❌ Erreur';
+        // Animation d'erreur sécurisée
+        submitButton.textContent = '❌ Erreur';
         submitButton.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
 
         setTimeout(() => {
@@ -197,7 +222,8 @@ if (contactForm) {
           submitButton.style.background = '';
         }, 2000);
 
-        console.error('Erreur:', error);
+        // Log sécurisé sans exposer de données sensibles
+        console.error('Erreur de soumission du formulaire');
       })
       .finally(() => {
         submitButton.disabled = false;
@@ -209,24 +235,33 @@ if (contactForm) {
 // Animation de confetti
 function createConfetti() {
   const colors = ['#f97316', '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b'];
+  const fragment = document.createDocumentFragment();
   
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 30; i++) {
     const confetti = document.createElement('div');
+    confetti.className = 'confetti-particle';
     confetti.style.cssText = `
       position: fixed;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background: ${colors[Math.floor(Math.random() * colors.length)]};
       left: ${Math.random() * 100}vw;
       top: -10px;
       z-index: 1000;
-      animation: confetti-fall 3s linear forwards;
+      animation: confetti-fall 2s linear forwards;
+      pointer-events: none;
     `;
     
-    document.body.appendChild(confetti);
+    fragment.appendChild(confetti);
     
-    setTimeout(() => confetti.remove(), 3000);
+    setTimeout(() => {
+      if (confetti.parentNode) {
+        confetti.parentNode.removeChild(confetti);
+      }
+    }, 2000);
   }
+  
+  document.body.appendChild(fragment);
 }
 
 // CSS pour l'animation de confetti
@@ -263,21 +298,29 @@ if (burger && mobileMenu) {
   });
 }
 
-// Animation des statistiques
+// Animation des statistiques optimisée
 function animateCounter(elementId, targetValue, suffix = '') {
   const element = document.getElementById(elementId);
-  if (!element) return;
-
+  if (!element || element.dataset.animated) return;
+  
+  element.dataset.animated = 'true';
   let currentValue = 0;
-  const increment = targetValue / 100;
-  const timer = setInterval(() => {
-    currentValue += increment;
-    if (currentValue >= targetValue) {
-      currentValue = targetValue;
-      clearInterval(timer);
-    }
+  const duration = 1000;
+  const startTime = performance.now();
+  
+  function updateCounter(timestamp) {
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    currentValue = targetValue * progress;
     element.textContent = Math.floor(currentValue) + suffix;
-  }, 20);
+    
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter);
+    }
+  }
+  
+  requestAnimationFrame(updateCounter);
 }
 
 // Observer pour déclencher les animations

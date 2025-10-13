@@ -56,28 +56,51 @@ function trackPricingView(packageName) {
   });
 }
 
-// Événements de scroll pour mesurer l'engagement
+// Événements de scroll optimisés pour mesurer l'engagement
 let scrollDepth = 0;
-window.addEventListener('scroll', function() {
-  const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-  
-  if (scrollPercent > scrollDepth && scrollPercent % 25 === 0) {
-    gtag('event', 'scroll_depth', {
-      'event_category': 'engagement',
-      'event_label': scrollPercent + '%',
-      'value': scrollPercent
-    });
-    scrollDepth = scrollPercent;
-  }
-});
+let scrollTicking = false;
 
-// Mesure du temps sur la page
+function handleScroll() {
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      try {
+        const scrollHeight = document.body.scrollHeight - window.innerHeight;
+        if (scrollHeight > 0) {
+          const scrollPercent = Math.round((window.scrollY / scrollHeight) * 100);
+          
+          if (scrollPercent > scrollDepth && scrollPercent % 25 === 0 && typeof gtag === 'function') {
+            gtag('event', 'scroll_depth', {
+              'event_category': 'engagement',
+              'event_label': scrollPercent + '%',
+              'value': scrollPercent
+            });
+            scrollDepth = scrollPercent;
+          }
+        }
+      } catch (error) {
+        console.error('Erreur lors du tracking du scroll');
+      }
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
+}
+
+window.addEventListener('scroll', handleScroll, { passive: true });
+
+// Mesure du temps sur la page avec gestion d'erreurs
 let startTime = Date.now();
 window.addEventListener('beforeunload', function() {
-  const timeOnPage = Math.round((Date.now() - startTime) / 1000);
-  gtag('event', 'time_on_page', {
-    'event_category': 'engagement',
-    'event_label': 'seconds',
-    'value': timeOnPage
-  });
+  try {
+    const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+    if (typeof gtag === 'function' && timeOnPage > 0) {
+      gtag('event', 'time_on_page', {
+        'event_category': 'engagement',
+        'event_label': 'seconds',
+        'value': timeOnPage
+      });
+    }
+  } catch (error) {
+    // Erreur silencieuse lors du déchargement
+  }
 });
