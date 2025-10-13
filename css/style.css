@@ -1280,13 +1280,13 @@ button {
 }
 
 /* Amélioration des liens (contraste en mode clair/sombre) */
-a {
+a:not(.text-white):not(.btn-contact) {
   text-decoration: none !important;
   transition: all 0.3s ease !important;
   color: #0f172a !important;
 }
 
-.dark a {
+.dark a:not(.text-white):not(.btn-contact) {
   color: #e5e7eb !important;
 }
 
