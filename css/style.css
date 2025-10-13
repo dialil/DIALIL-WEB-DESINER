@@ -1162,29 +1162,25 @@ html {
   color: #000000 !important; /* Noir pur - ratio 21:1 */
 }
 
-/* Mode sombre - Contrastes WCAG AAA */
-.dark .text-gray-300 {
+/* Mode sombre - Contrastes WCAG AAA renforcés */
+.dark .text-gray-300,
+.dark .text-gray-400,
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900,
+.dark p,
+.dark span,
+.dark div,
+.dark li,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
   color: #ffffff !important; /* Blanc pur - ratio 21:1 */
-}
-
-.dark .text-gray-400 {
-  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
-}
-
-.dark .text-gray-600 {
-  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
-}
-
-.dark .text-gray-700 {
-  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
-}
-
-.dark .text-gray-800 {
-  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
-}
-
-.dark .text-gray-900 {
-  color: #ffffff !important; /* Blanc pur - ratio 21:1 */
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5) !important;
 }
 
 /* Couleurs d'accent optimisées */
@@ -1367,15 +1363,16 @@ button {
   text-transform: none !important;
 }
 
-/* Amélioration des liens (contraste en mode clair/sombre) */
+/* Liens - Contraste maximal */
 a {
   text-decoration: none !important;
   transition: all 0.3s ease !important;
-  color: #0f172a !important;
+  color: #000000 !important;
 }
 
-.dark a {
-  color: #e5e7eb !important;
+.dark a:not(.text-orange-500):not(.text-orange-600) {
+  color: #ffffff !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5) !important;
 }
 
 a:hover {
@@ -1413,8 +1410,13 @@ p {
   color: #000000 !important; /* Contraste maximal */
 }
 
-.dark p {
-  color: #ffffff !important; /* Contraste maximal mode sombre */
+/* Textes en mode sombre - Visibilité maximale */
+.dark p,
+.dark span:not(.text-orange-500):not(.text-blue-400),
+.dark div:not(.bg-orange-500):not(.bg-blue-500),
+.dark li {
+  color: #ffffff !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Mobile - taille minimum 16px */
@@ -1438,8 +1440,15 @@ h1 {
   color: #000000 !important; /* Contraste maximal */
 }
 
-.dark h1 {
-  color: #ffffff !important; /* Contraste maximal mode sombre */
+/* Titres en mode sombre - Contraste maximal */
+.dark h1,
+.dark h2:not(.text-blue-400),
+.dark h3:not(.text-orange-600):not(.text-blue-400),
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Mobile - taille lisible */
@@ -1845,15 +1854,16 @@ nav {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Navigation links (contraste élevé par défaut) */
+/* Navigation - Contraste maximal */
 nav a {
-  color: #0f172a !important;
+  color: #000000 !important;
   font-weight: 600 !important;
   transition: color 0.2s ease !important;
 }
 
 .dark nav a {
-  color: #f1f5f9 !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.8) !important;
 }
 
 nav a:hover {
@@ -1899,13 +1909,14 @@ nav a:hover {
 }
 
 #mobileMenu a {
-  color: #374151 !important;
+  color: #000000 !important;
   font-weight: 500 !important;
   transition: all 0.3s ease !important;
 }
 
 .dark #mobileMenu a {
-  color: #d1d5db !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.8) !important;
 }
 
 #mobileMenu a:hover {

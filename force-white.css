@@ -1,0 +1,19 @@
+/* FORCE ABSOLUE - PRIORITÉ MAXIMALE */
+html.dark body * {
+  color: white !important;
+}
+
+html.dark * {
+  color: white !important;
+}
+
+/* Spécifique Tailwind override */
+.dark .text-gray-300,
+.dark .text-gray-400,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: white !important;
+}
