@@ -1,92 +1,72 @@
-# Dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Production builds
-dist/
-build/
-
-# Environment variables
+# Fichiers de configuration locaux
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# IDE files
+# Dossiers de dépendances
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers de build
+dist/
+build/
+.next/
+out/
+
+# Fichiers de cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Fichiers de logs
+logs/
+*.log
+
+# Fichiers temporaires
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*.old
+
+# Fichiers de système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fichiers d'IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Logs
-logs
-*.log
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
+# Fichiers de test
 coverage/
+.nyc_output/
 
-# Temporary folders
-tmp/
-temp/
+# Fichiers de déploiement
+.vercel/
+.netlify/
 
-# Optional npm cache directory
-.npm
+# Fichiers de configuration sensibles
+config.json
+secrets.json
+*.key
+*.pem
 
-# Optional REPL history
-.node_repl_history
+# Fichiers de base de données
+*.db
+*.sqlite
+*.sqlite3
 
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# next.js build output
-.next
-
-# nuxt.js build output
-.nuxt
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
+# Fichiers de cache du navigateur
+.sass-cache/

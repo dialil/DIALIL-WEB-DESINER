@@ -414,6 +414,124 @@ function initDarkMode() {
 }
 
 // =========================
+// OPTIMISATIONS PERFORMANCES
+// =========================
+
+// Lazy loading des images
+function initLazyLoading() {
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.classList.add('loaded');
+          observer.unobserve(img);
+        }
+      });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+  } else {
+    // Fallback pour les navigateurs plus anciens
+    images.forEach(img => img.classList.add('loaded'));
+  }
+}
+
+// Optimisation des animations pour mobile
+function optimizeAnimationsForMobile() {
+  if (window.innerWidth < 768) {
+    // Désactiver les animations coûteuses sur mobile
+    const expensiveElements = document.querySelectorAll('.floating-particle, .animate-gradient-x, .pulse-glow-advanced');
+    expensiveElements.forEach(el => {
+      el.style.animation = 'none';
+      el.style.transition = 'none';
+    });
+  }
+}
+
+// Debounce pour les événements de scroll
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Optimisation du scroll avec debounce
+const optimizedScrollHandler = debounce(() => {
+  const scrolled = window.pageYOffset;
+  const hero = document.querySelector('header');
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  const aboutSection = document.querySelector('#about');
+  
+  if (hero && window.innerWidth > 768) {
+    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+  }
+  
+  if (scrollIndicator && aboutSection) {
+    const aboutTop = aboutSection.offsetTop;
+    const heroHeight = hero.offsetHeight;
+    
+    if (scrolled > heroHeight * 0.8) {
+      scrollIndicator.style.opacity = '0';
+      scrollIndicator.style.transform = 'translateY(20px)';
+    } else {
+      scrollIndicator.style.opacity = '1';
+      scrollIndicator.style.transform = 'translateY(0)';
+    }
+  }
+}, 16); // ~60fps
+
+// Préchargement des ressources critiques
+function preloadCriticalResources() {
+  const criticalImages = [
+    'assets/images/logo.jpg',
+    'assets/images/photo-coding.jpg'
+  ];
+  
+  criticalImages.forEach(src => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = src;
+    document.head.appendChild(link);
+  });
+}
+
+// Optimisation des performances
+function initPerformanceOptimizations() {
+  // Utiliser requestAnimationFrame pour les animations
+  let ticking = false;
+  
+  function updateAnimations() {
+    // Mettre à jour les animations ici
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateAnimations);
+      ticking = true;
+    }
+  }
+  
+  // Optimiser les événements de scroll
+  window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+  
+  // Optimiser les événements de resize
+  window.addEventListener('resize', debounce(() => {
+    optimizeAnimationsForMobile();
+  }, 250));
+}
+
+// =========================
 // INITIALISATION
 // =========================
 
@@ -422,12 +540,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialiser le mode sombre
   initDarkMode();
   
+  // Optimisations de performance
+  initPerformanceOptimizations();
+  initLazyLoading();
+  preloadCriticalResources();
+  optimizeAnimationsForMobile();
+  
   // Initialiser toutes les animations
   initTypingAnimation();
   createFloatingParticles();
   initScrollReveal();
   initCardAnimations();
-  initParallaxEffect();
   initImageLoading();
   
   // Optimisations mobiles

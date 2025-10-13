@@ -1041,6 +1041,85 @@ header {
 }
 
 /* ========================= */
+/* OPTIMISATIONS PERFORMANCES */
+/* ========================= */
+
+/* Optimisation des animations pour les performances */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimisation GPU pour les animations */
+.floating-particle,
+.animate-gradient-x,
+.pulse-glow-advanced,
+.card-hover {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimisation des images */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: auto;
+}
+
+/* Lazy loading pour les images */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Optimisation des polices */
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+}
+
+/* Optimisation des transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Optimisation des scrolls */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Optimisation des performances mobiles */
+@media (max-width: 768px) {
+  .floating-particle {
+    display: none;
+  }
+  
+  .animate-gradient-x {
+    animation: none;
+  }
+  
+  .pulse-glow-advanced {
+    animation: none;
+  }
+}
+
+/* ========================= */
 /* OPTIMISATION VISIBILITÉ */
 /* ========================= */
 
