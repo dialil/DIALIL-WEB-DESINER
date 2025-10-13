@@ -147,61 +147,64 @@ function initImageLoading() {
 // FORMULAIRE AVEC ANIMATIONS
 // =========================
 
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const formData = new FormData(form);
-  const submitButton = form.querySelector('button[type="submit"]');
-  const originalText = submitButton.textContent;
+    const form = e.target;
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
 
-  // Animation de chargement
-  submitButton.innerHTML = '<div class="loading-spinner"></div> Envoi en cours...';
-  submitButton.disabled = true;
-  submitButton.classList.add('pulse-glow-advanced');
+    // Animation de chargement
+    submitButton.innerHTML = '<div class="loading-spinner"></div> Envoi en cours...';
+    submitButton.disabled = true;
+    submitButton.classList.add('pulse-glow-advanced');
 
-  fetch(form.action, {
-    method: 'POST',
-    body: formData,
-    headers: {
-      'Accept': 'application/json'
-    }
-  })
-    .then(response => {
-      if (response.ok) {
-        // Animation de succès
-        submitButton.innerHTML = '✅ Envoyé !';
-        submitButton.style.background = 'linear-gradient(45deg, #10b981, #059669)';
-        
-        // Confetti animation
-        createConfetti();
-        
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          // Animation de succès
+          submitButton.innerHTML = '✅ Envoyé !';
+          submitButton.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+
+          // Confetti animation
+          createConfetti();
+
+          setTimeout(() => {
+            form.reset();
+            submitButton.textContent = originalText;
+            submitButton.style.background = '';
+          }, 2000);
+        } else {
+          throw new Error('Erreur lors de l\'envoi');
+        }
+      })
+      .catch(error => {
+        // Animation d'erreur
+        submitButton.innerHTML = '❌ Erreur';
+        submitButton.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+
         setTimeout(() => {
-          form.reset();
           submitButton.textContent = originalText;
           submitButton.style.background = '';
         }, 2000);
-      } else {
-        throw new Error('Erreur lors de l\'envoi');
-      }
-    })
-    .catch(error => {
-      // Animation d'erreur
-      submitButton.innerHTML = '❌ Erreur';
-      submitButton.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
-      
-      setTimeout(() => {
-        submitButton.textContent = originalText;
-        submitButton.style.background = '';
-      }, 2000);
-      
-      console.error('Erreur:', error);
-    })
-    .finally(() => {
-      submitButton.disabled = false;
-      submitButton.classList.remove('pulse-glow-advanced');
-    });
-});
+
+        console.error('Erreur:', error);
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.classList.remove('pulse-glow-advanced');
+      });
+  });
+}
 
 // Animation de confetti
 function createConfetti() {
@@ -357,8 +360,8 @@ function enhanceTouchInteractions() {
 
 // Préchargement des images critiques
 function preloadCriticalImages() {
-  const criticalImages = ['logo.jpg', 'photo-coding.jpg'];
-  
+  const criticalImages = ['assets/images/logo.jpg', 'assets/images/photo-coding.jpg'];
+
   criticalImages.forEach(src => {
     const img = new Image();
     img.src = src;
